@@ -125,4 +125,3 @@ colors: {
 'gray-dark-lightest': '#ebebec'
 }
 };
-require(['core']);

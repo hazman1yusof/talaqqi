@@ -3,14 +3,24 @@
 @section('corejs')
   
   requirejs.config({
-      baseUrl: '.'
+      baseUrl: '../'
   });
 
 @endsection
 
 @section('page')
 
-<div class="container">
+<!-- <div class="container">
+  <div class="row row-cards row-deck">
+    <div class="col-md-12 col-lg-12">
+      <div class="row">
+
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+ <div class="container">
   <div class="page-header">
     <h1 class="page-title">
       Talaqqi Student
