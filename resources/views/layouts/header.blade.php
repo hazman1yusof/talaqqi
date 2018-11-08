@@ -4,7 +4,7 @@
   <div class="container">
     <div class="d-flex">
       <a class="header-brand" href="./index.html">
-        <img src="./demo/LOGO-BARU-PROTAZz2-smaller.png" class="header-brand-img" alt="tabler logo">
+        <img src="{{ asset('./demo/LOGO-BARU-PROTAZz2-smaller.png')}}" class="header-brand-img" alt="tabler logo">
       </a>
       <h2 class="mb-0"><i></i></h2>
       <div class="d-flex order-lg-2 ml-auto">
