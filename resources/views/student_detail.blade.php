@@ -66,12 +66,12 @@
 				  </div>
 				  <div class="card-body">
 				  	<span id="data" 
-				  		data-overall="overall, 7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6" 
-				  		data-period="Jan, Feb, Mar, Apr, May, Jun"
+				  		data-overall="overall, 7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3" 
+				  		data-period="12/11/2018, 02/11/2018, 12/10/2018, 22/09/2018, 12/08/2018, 12/12/2018, 12/12/2018, 12/12/2018, 12/12/2018, 12/12/2018"
 				  	>
 				  	</span>
 
-					@for ($i = 0; $i < 12; $i++)
+					@for ($i = 0; $i < 10; $i++)
 					    <span id="comment_{{$i}}" data-comment="comment_{{$i}} Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."></span>
 					    <span id="markah_{{$i}}" data-markah="{{$i}}, 6, 7, 7.5"></span>
 					@endfor
@@ -142,7 +142,7 @@
 						        datasets: [{
 								    label: "Student A",
 								    backgroundColor: "rgba(200,0,0,0.2)",
-								    data: $('#markah_11').data('markah').split(',')
+								    data: $('#markah_9').data('markah').split(',')
 								}]
 						    },
 						    options: {
@@ -151,7 +151,7 @@
 									ticks: {
 										beginAtZero: true,
 										min: 0,
-      									max: 12,
+      									max: 10,
       									stepSize: 2
 									}
 								}
@@ -177,7 +177,7 @@
 					</script>
           	    </div>
 
-				<div class="card">
+				      <div class="card">
                   <div class="card-header">
                   	<h3 class="card-title">Komen Ustad</h3>
                   </div>
