@@ -73,6 +73,14 @@
 }
 @endsection
 
+@section('corejs')
+  
+  requirejs.config({
+      baseUrl: '../'
+  });
+
+@endsection
+
 @section('page')
 
 <div class="container space-3--lg">

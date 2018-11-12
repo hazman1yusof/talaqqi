@@ -12,22 +12,22 @@
       <div class="col-lg order-lg-first">
         <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
           <li class="nav-item">
-            <a href="./home" class="nav-link @if(Request::is('home') || Request::is('/')) {{'active'}} @endif"><i class="fe fe-home"></i> Home</a>
+            <a href="\home" class="nav-link @if(Request::is('home') || Request::is('/')) {{'active'}} @endif"><i class="fe fe-home"></i> Home</a>
           </li>
           <li class="nav-item">
-            <a href="./about" class="nav-link {{(Request::is('about') ? 'active' : '')}}"><i class="fe fe-compass"></i> About</a>
+            <a href="\about" class="nav-link {{(Request::is('about') ? 'active' : '')}}"><i class="fe fe-compass"></i> About</a>
           </li>
           <li class="nav-item">
-            <a href="./mission" class="nav-link {{(Request::is('mission') ? 'active' : '')}}"><i class="fe fe-layers"></i> Mission</a>
+            <a href="\mission" class="nav-link {{(Request::is('mission') ? 'active' : '')}}"><i class="fe fe-layers"></i> Mission</a>
           </li>
           <li class="nav-item dropdown">
-            <a href="./student" class="nav-link  @if(Request::is('student') || Request::is('student/*')) {{'active'}} @endif"><i class="fe fe-users"></i> Students</a>
+            <a href="\student" class="nav-link  @if(Request::is('student') || Request::is('student/*')) {{'active'}} @endif"><i class="fe fe-users"></i> Students</a>
           </li>
           <li class="nav-item">
-            <a href="./blog" class="nav-link {{(Request::is('blog') ? 'active' : '')}}"><i class="fe fe-book"></i> Blog</a>
+            <a href="\blog" class="nav-link {{(Request::is('blog') ? 'active' : '')}}"><i class="fe fe-book"></i> Blog</a>
           </li>
           <li class="nav-item">
-            <a href="./contact" class="nav-link {{(Request::is('contact') ? 'active' : '')}}"><i class="fe fe-map-pin"></i> Contact</a>
+            <a href="\contact" class="nav-link {{(Request::is('contact') ? 'active' : '')}}"><i class="fe fe-map-pin"></i> Contact</a>
           </li>
         </ul>
       </div>

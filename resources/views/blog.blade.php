@@ -1,5 +1,13 @@
 @extends('layouts.main')
 
+@section('corejs')
+  
+  requirejs.config({
+      baseUrl: '.'
+  });
+
+@endsection
+
 @section('page')
 
 <div class="container">

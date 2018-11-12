@@ -13,6 +13,14 @@
   }
 @endsection
 
+@section('corejs')
+  
+  requirejs.config({
+      baseUrl: '../'
+  });
+
+@endsection
+
 <div id="vue-slider">
   <div class="row row-para m-0 p-0">
     <carousel-3d :count="slides.length" :controls-visible="carouselControls" :width="slideWidth"

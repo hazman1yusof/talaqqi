@@ -10,9 +10,9 @@ shim: {
 },
 paths: {
 'core': 'assets/js/core',
-'jquery':['https://code.jquery.com/jquery-3.3.1.min','assets/js/vendors/jquery-3.2.1.min'],
+'jquery':['https://code.jquery.com/jquery-3.3.1.min','assets/js/vendors/jquery-3.2.1.min','assets/js/vendors/jquery-3.2.1.min'],
 'bootstrap': ['https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min','assets/js/vendors/bootstrap.bundle.min'],
-'vue': ['https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min'],
+'vue': ['https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min','assets/js/vendors/vue.min'],
 'Carousel3d': 'assets/js/vendors/vue-carousel-3d.min',
 'sparkline': 'assets/js/vendors/jquery.sparkline.min',
 'selectize': 'assets/js/vendors/selectize.min',
@@ -21,6 +21,7 @@ paths: {
 'vector-map-de': 'assets/js/vendors/jquery-jvectormap-de-merc',
 'vector-map-world': 'assets/js/vendors/jquery-jvectormap-world-mill',
 'circle-progress': 'assets/js/vendors/circle-progress.min',
+'chartjs':['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min','assets/js/vendors/Chart.min']
 }
 });
 window.tabler = {
@@ -125,3 +126,4 @@ colors: {
 'gray-dark-lightest': '#ebebec'
 }
 };
+require(['core']);

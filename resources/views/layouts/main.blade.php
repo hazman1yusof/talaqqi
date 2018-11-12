@@ -33,6 +33,7 @@
     <script src="{{ asset('./assets/plugins/charts-c3/plugin.js') }}"></script>
     <!-- Input Mask Plugin -->
     <script src="{{ asset('./assets/plugins/input-mask/plugin.js') }}"></script>
+    @yield('script')
   </head>
   <body class="">
     <div class="page">
