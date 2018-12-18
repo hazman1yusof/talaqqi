@@ -65,7 +65,7 @@
 
         <div class="col-lg-8">
           <div class="card">
-        	  <div class="card-header">
+        	  <div class="card-header" style="border-bottom: none;">
               <span class="col">
                 <h3 class="card-title">Progress Chart</h3>
               </span>
@@ -73,6 +73,15 @@
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalmarkah"><span class="fa fa-plus"></span> Markah Baru</button>
               </span>
         	  </div>
+            <div class="card-header">
+              <div class="col alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert"></button>
+                <ul>
+                  <li>The graph shows your marks over time</li>
+                  <li>Click on any chart pointer to see your marks and instructor comments below</li>
+                </ul>
+              </div>
+            </div>
         	  <div class="card-body">
         	  	<span id="data" data-overall="overall, 4.0, 5.9, 5.5, 6.5, 7.4, 7.5, 7.2, 7.5, 8, 9.3" data-period="12/11/2018, 02/11/2018, 12/10/2018, 22/09/2018, 12/08/2018, 12/12/2018, 12/12/2018, 12/12/2018, 12/12/2018, 12/12/2018" ></span>
 
@@ -80,7 +89,11 @@
         		    <span id="data_{{$i}}" data-ayat="bakharah, ayat 2{{$i}}" data-overall="{{$i}}" data-markah="{{$i}}, 6, 7, 7.5" data-period="{{$i}}/11/2018" data-comment="comment_{{$i}} Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."></span>
         		  @endfor
 
-        	    <div id="chart-wrapper" style="height: 16rem"></div>
+        	    <div id="chart-wrapper" style="height: 16rem;cursor: pointer;"></div>
+              <div class="d-flex">
+                <button type="button" class="btn btn-lime btn-sm">Previous</button>
+                <button type="button" class="btn btn-lime btn-sm ml-auto" disabled>Next</button>
+              </div>
         	  </div>
         	</div>
 

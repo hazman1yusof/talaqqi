@@ -28,7 +28,7 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
           },
         },
         legend: {
-                  show: false, //hide legend
+          show: false, //hide legend
         },
         padding: {
           bottom: 0,
