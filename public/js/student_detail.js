@@ -6,7 +6,7 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         data: {
           columns: [
               // each columns data
-            $('#data').data('overall').split(',')
+            data_overall()
           ],
           labels: true,
           type: 'spline', // default type of chart
@@ -44,7 +44,7 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
               datasets: [{
               label: "Student A",
               backgroundColor: "rgba(200,0,0,0.2)",
-              data: $('#data_9').data('markah').split(',')
+              data: $('#data_'+$('#lastid').data('id')).data('markah').split(',')
           }]
           },
           options: {
@@ -62,6 +62,7 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
 
       var myChart = new Chart(ctx, config);
 
+      markah_upd($('#lastid').data('id'));
       function markah_upd(index){
         var markah_arr =  $("#data_"+index).data('markah').split(',');
         var period = $("#data_"+index).data('period');
@@ -77,6 +78,15 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         $('#tag-tajwid').text(markah_arr[2]);
         $('#tag-kelancaran').text(markah_arr[3]);
       }
+
+      function data_overall(){
+        var data_overall = ["overall"];
+        $( "span[talaqqi]" ).each(function( index ) {
+          data_overall.push($(this).data('overall'));
+        });
+        return data_overall
+      }
+      data_overall();
     
     });
   });

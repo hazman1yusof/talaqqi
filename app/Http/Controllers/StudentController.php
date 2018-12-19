@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\ticket;
 use App\message;
 use Auth;
+use DB;
 
 class StudentController extends Controller
 {
@@ -16,8 +17,18 @@ class StudentController extends Controller
         return view('student');
     }
 
-    public function detail()
+    public function detail($id,Request $request)
     {   
-        return view('student_detail');
+    	$user = DB::table('users')
+    				->where('id','=',$id)
+    				->first();
+
+    	$talaqqi = DB::table('talaqqi')
+    				->where('user_id','=',$id)
+    				->offset($request->offset)
+    				->limit($request->limit)
+    				->get();
+
+        return view('student_detail',compact('user','talaqqi'));
     }
 }

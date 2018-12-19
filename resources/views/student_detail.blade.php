@@ -26,10 +26,10 @@
             <div class="card-header" style="background-image: url({{ asset('demo/photos/eberhard-grossgasteiger-311213-500.jpg') }});"></div>
             <div class="card-body text-center">
               <img class="card-profile-img" src="{{ asset('demo/faces/male/16.jpg') }}">
-              <h3 class="mb-3">Hazman Yusof</h3>
+              <h3 class="mb-3">{{ $user->name}}</h3>
               <p class="text-muted mb-0"></p>
               <p class="mb-4">
-                Student, Surau Assobah Seksyen 3 Bandar Baru Bangi
+                {{$user->bio}}
               </p>
               <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
                 <span class="fe fe-edit-3"></span> Edit Bio
@@ -45,16 +45,16 @@
                   <p class="text-muted mb-0">Student</p>
                   <ul class="social-links list-inline mb-0 mt-2">
                     <li class="list-inline-item">
-                      <a href="javascript:void(0)" title="Facebook" data-toggle="tooltip"><i class="fa fa-facebook"></i></a>
+                      <a href="javascript:void(0)" title="{{$user->facebook}}" data-toggle="tooltip"><i class="fa fa-facebook"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="javascript:void(0)" title="Twitter" data-toggle="tooltip"><i class="fa fa-twitter"></i></a>
+                      <a href="javascript:void(0)" title="{{$user->twitter}}" data-toggle="tooltip"><i class="fa fa-twitter"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="javascript:void(0)" title="011-23090948" data-toggle="tooltip"><i class="fa fa-phone"></i></a>
+                      <a href="javascript:void(0)" title="{{$user->whatsapp}}" data-toggle="tooltip"><i class="fa fa-phone"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="javascript:void(0)" title="Instagram" data-toggle="tooltip"><i class="fa fa-instagram"></i></a>
+                      <a href="javascript:void(0)" title="{{$user->instagram}}" data-toggle="tooltip"><i class="fa fa-instagram"></i></a>
                     </li>
                   </ul>
                 </div>
@@ -83,11 +83,12 @@
               </div>
             </div>
         	  <div class="card-body">
-        	  	<span id="data" data-overall="overall, 4.0, 5.9, 5.5, 6.5, 7.4, 7.5, 7.2, 7.5, 8, 9.3" data-period="12/11/2018, 02/11/2018, 12/10/2018, 22/09/2018, 12/08/2018, 12/12/2018, 12/12/2018, 12/12/2018, 12/12/2018, 12/12/2018" ></span>
 
-        		  @for ($i = 0; $i < 10; $i++)
-        		    <span id="data_{{$i}}" data-ayat="bakharah, ayat 2{{$i}}" data-overall="{{$i}}" data-markah="{{$i}}, 6, 7, 7.5" data-period="{{$i}}/11/2018" data-comment="comment_{{$i}} Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."></span>
-        		  @endfor
+              @foreach($talaqqi as $index => $obj )
+                <span talaqqi id="data_{{$index}}" data-ayat="{{$obj->ayat}}" data-overall="{{$obj->overall}}" data-markah="{{$obj->tajwid}}, {{$obj->tajwid}}, {{$obj->tarannum}}, {{$obj->kelancaran}}" data-period="{{$obj->adddate}}" data-comment="{{$obj->komen}}"></span>
+              @endforeach
+
+                <span id="lastid" data-id="{{$index}}"></span>
 
         	    <div id="chart-wrapper" style="height: 16rem;cursor: pointer;"></div>
               <div class="d-flex">
@@ -104,6 +105,8 @@
                 <h3 class="card-title">Markah <span class="span-header text-muted">12/12/2018</span></h3>
               </span>
               <span class="col text-right"><span class="span-ayat text-muted" id="ayat"> bakharah, ayat 21</span></span>
+
+              <button type="button" class="btn btn-primary btn-sm ml-auto">Edit</button>
 
             </div>
 
@@ -142,6 +145,19 @@
               </li>
             </ul>
           </div>
+
+          <nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+</div>
           
         </div>
 

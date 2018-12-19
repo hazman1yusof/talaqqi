@@ -91,25 +91,25 @@
           <h3 style="line-height: 1.8;">6 Kepentingan Talaqqi Dan Musyafahah Dalam Pembacaan Al-Quran.</h3>
         </div>
 		  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link tab-vertical__nav-link active show" id="v-pills-features-tab" data-toggle="pill" href="#v-pills-features" role="tab" aria-controls="v-pills-features" aria-selected="false">
-                1. Sunnah Rasulullah SAW
-              </a>
-              <a class="nav-link tab-vertical__nav-link" id="v-pills-key-benefits-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-key-benefits" aria-selected="true">
-                2. Talaqqi merupakan satu-satunya cara Al-Quran dipindahkan dan diriwayatkan
-              </a>
-              <a class="nav-link tab-vertical__nav-link" id="v-pills-company-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-company" aria-selected="true">
-                3. Menerima ilmu dengan sanad yang sahih sampai kepada Rasulullah
-              </a>
-              <a class="nav-link tab-vertical__nav-link" id="v-pills-company-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-company" aria-selected="true">
-                4. Mengetahui kesahihan,kebenaran dan kebolehpercayaan ilmu yang dipelajari.
-              </a>
-              <a class="nav-link tab-vertical__nav-link" id="v-pills-company-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-company" aria-selected="false">
-                5. Menghindari dari keciciran ayat Al-Quran
-              </a>
-              <a class="nav-link tab-vertical__nav-link" id="v-pills-company-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-company" aria-selected="false">
-                6. Mengenalpasti ayat-ayat Al-Quran palsu atau yang diselewengkan.
-              </a>
-          </div>
+          <a class="nav-link tab-vertical__nav-link active show" id="v-pills-features-tab" data-toggle="pill" href="#v-pills-features" role="tab" aria-controls="v-pills-features" aria-selected="false">
+            1. Sunnah Rasulullah SAW
+          </a>
+          <a class="nav-link tab-vertical__nav-link" id="v-pills-key-benefits-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-key-benefits" aria-selected="true">
+            2. Talaqqi merupakan satu-satunya cara Al-Quran dipindahkan dan diriwayatkan
+          </a>
+          <a class="nav-link tab-vertical__nav-link" id="v-pills-company-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-company" aria-selected="true">
+            3. Menerima ilmu dengan sanad yang sahih sampai kepada Rasulullah
+          </a>
+          <a class="nav-link tab-vertical__nav-link" id="v-pills-company-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-company" aria-selected="true">
+            4. Mengetahui kesahihan,kebenaran dan kebolehpercayaan ilmu yang dipelajari.
+          </a>
+          <a class="nav-link tab-vertical__nav-link" id="v-pills-company-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-company" aria-selected="false">
+            5. Menghindari dari keciciran ayat Al-Quran
+          </a>
+          <a class="nav-link tab-vertical__nav-link" id="v-pills-company-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-company" aria-selected="false">
+            6. Mengenalpasti ayat-ayat Al-Quran palsu atau yang diselewengkan.
+          </a>
+      </div>
 		</div>
 	  </div>
 	  <div class="col-md-8">
