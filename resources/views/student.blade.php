@@ -31,7 +31,7 @@
               </div>
               <div class="avatar avatar-md mr-3" style="background-image: url(demo/faces/male/15.jpg)">
               </div>
-              <div class="text-muted"><a href="student/1">Hazman Yusof</a></div>
+              <div class="text-muted"><a href="student/2?offset=0&limit=10">Hazman Yusof</a></div>
             </div>
             <div class="card-chart-bg">
               <div id="chart-bg-users-1" style="height: 100%"></div>

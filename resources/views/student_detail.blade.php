@@ -12,6 +12,14 @@
     <script src="{{ asset('./js/student_detail.js') }}"></script>
 @endsection
 
+@section('styles')
+  .pill_mark{
+    border-radius: 5px 5px 0px 0px !important;
+    padding: 0.5rem !important;
+    text-align: center;
+  }
+@endsection
+
 @section('page')
 
 <div class="container">
@@ -26,7 +34,7 @@
             <div class="card-header" style="background-image: url({{ asset('demo/photos/eberhard-grossgasteiger-311213-500.jpg') }});"></div>
             <div class="card-body text-center">
               <img class="card-profile-img" src="{{ asset('demo/faces/male/16.jpg') }}">
-              <h3 class="mb-3">{{ $user->name}}</h3>
+              <h3 class="mb-3">{{$user->firstname}} {{$user->lastname}}</h3>
               <p class="text-muted mb-0"></p>
               <p class="mb-4">
                 {{$user->bio}}
@@ -64,6 +72,8 @@
         </div>
 
         <div class="col-lg-8">
+
+          <!-- card pertama progress chart -->
           <div class="card">
         	  <div class="card-header" style="border-bottom: none;">
               <span class="col">
@@ -98,67 +108,73 @@
         	  </div>
         	</div>
 
-          <div class="card">
-            <div class="card-header">
-
-              <span class="col">
-                <h3 class="card-title">Markah <span class="span-header text-muted">12/12/2018</span></h3>
-              </span>
-              <span class="col text-right"><span class="span-ayat text-muted" id="ayat"> bakharah, ayat 21</span></span>
-
-              <button type="button" class="btn btn-primary btn-sm ml-auto">Edit</button>
-
+          <nav>
+            <div class="nav nav-pills" id="nav-tab" role="tablist" style="padding: 1rem 1rem 0rem 1rem;">
+                <a class="col nav-item nav-link active pill_mark" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" >Markah</a>
+                <a class="col nav-item nav-link pl-auto pill_mark" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Komen Ustad</a>
             </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-        	  <div class="card-body mx-auto">
-        	  	<div class="tags">
-        		  	<span class="tag">Overall<span class="tag-addon tag-red" id="tag-overall">8</span></span>
-          			<span class="tag">Tarannum<span class="tag-addon tag-cyan" id="tag-tarannum">6</span></span>
-          			<span class="tag">Tajwid<span class="tag-addon tag-cyan" id="tag-tajwid">7</span></span>
-          			<span class="tag">Kelancaran<span class="tag-addon tag-cyan" id="tag-kelancaran">7.5</span></span>
-          		</div>
-        	  	<canvas id="myChart"></canvas>
-        	  </div>
-    	    </div>
+              <!-- card kedua markah -->
+              <div class="card">
+                <div class="card-header">
 
-	       <div class="card">
-            <div class="card-header">
-              <span class="col">
-                <h3 class="card-title">Komen Ustad <span class="span-header text-muted">12/12/2018</span></h3>
-              </span>
-              <span class="col text-right"><span class="span-ayat text-muted" id="ayat"> bakharah, ayat 21</span></span>
-            </div>
+                  <span class="col">
+                    <h3 class="card-title">Markah <span class="span-header text-muted">12/12/2018</span></h3>
+                  </span>
+                  <span class="col text-right"><span class="span-ayat text-muted" id="ayat"> bakharah, ayat 21</span></span>
 
-            <ul class="list-group card-list-group">
-              <li class="list-group-item py-5">
-                <div class="media">
-                  <div class="media-object avatar avatar-md mr-4" style="background-image: url({{ asset('demo/faces/male/16.jpg') }}"></div>
-                  <div class="media-body">
-                    <div class="media-heading">
-                      <h5>Uwais Qorny</h5>
-                    </div>
-                    <div id="comment">
-                    	comment_11 Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    </div>
-                  </div>
+                  <button type="button" class="btn btn-primary btn-sm ml-auto">Edit</button>
+
                 </div>
-              </li>
-            </ul>
+
+                <div class="card-body mx-auto">
+                  <div class="tags">
+                    <span class="tag">Overall<span class="tag-addon tag-red" id="tag-overall">8</span></span>
+                    <span class="tag">Tarannum<span class="tag-addon tag-cyan" id="tag-tarannum">6</span></span>
+                    <span class="tag">Tajwid<span class="tag-addon tag-cyan" id="tag-tajwid">7</span></span>
+                    <span class="tag">Kelancaran<span class="tag-addon tag-cyan" id="tag-kelancaran">7.5</span></span>
+                  </div>
+                  <canvas id="myChart"></canvas>
+                </div>
+              </div>
+              <!-- end -->
+
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              
+              <!-- card ketiga -->
+               <div class="card">
+                  <div class="card-header">
+                    <span class="col">
+                      <h3 class="card-title">Komen Ustad <span class="span-header text-muted">12/12/2018</span></h3>
+                    </span>
+                    <span class="col text-right"><span class="span-ayat text-muted" id="ayat"> bakharah, ayat 21</span></span>
+                  </div>
+
+                  <ul class="list-group card-list-group">
+                    <li class="list-group-item py-5">
+                      <div class="media">
+                        <div class="media-object avatar avatar-md mr-4" style="background-image: url({{ asset('demo/faces/male/16.jpg') }}"></div>
+                        <div class="media-body">
+                          <div class="media-heading">
+                            <h5>Uwais Qorny</h5>
+                          </div>
+                          <div id="comment">
+                            comment_11 Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <!-- end -->
+
+            </div>
           </div>
 
-          <nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
-</div>
-          
         </div>
 
       </div>
