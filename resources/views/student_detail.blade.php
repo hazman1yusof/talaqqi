@@ -92,10 +92,10 @@
                 </ul>
               </div>
             </div>
-        	  <div class="card-body">
+        	  <div class="card-body"> 
 
               @foreach($talaqqi as $index => $obj )
-                <span talaqqi id="data_{{$index}}" data-ayat="{{$obj->ayat}}" data-overall="{{$obj->overall}}" data-markah="{{$obj->tajwid}}, {{$obj->tajwid}}, {{$obj->tarannum}}, {{$obj->kelancaran}}" data-period="{{$obj->adddate}}" data-comment="{{$obj->komen}}"></span>
+                <span talaqqi id="data_{{$index}}" data-ayat="{{$obj->ayat}}" data-overall="{{$obj->overall}}" data-markah="{{$obj->overall}}, {{$obj->tajwid}}, {{$obj->tarannum}}, {{$obj->kelancaran}}" data-period="{{$obj->adddate}}" data-comment="{{$obj->komen}}"></span>
               @endforeach
 
                 <span id="lastid" data-id="{{$index}}"></span>

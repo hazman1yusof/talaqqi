@@ -80,13 +80,16 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
       }
 
       function data_overall(){
-        var data_overall = ["overall"];
+        var data_overall = [];
         $( "span[talaqqi]" ).each(function( index ) {
           data_overall.push($(this).data('overall'));
         });
-        return data_overall
+        data_overall.push('talaqqi');
+        data_overall = data_overall.reverse();
+        console.log(data_overall);
+
+        return data_overall;
       }
-      data_overall();
 
       function pad(pad, str, padLeft) {
         if (typeof str === 'undefined') 

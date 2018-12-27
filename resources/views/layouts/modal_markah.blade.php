@@ -9,17 +9,21 @@
         </button>
       </div>
       <div class="modal-body">
-	    <form>
+	    <form method="POST" action="/talaqqi" id="talaqqiform">
+        @csrf
+        <input type="hidden" name="user_id" value="{{$user->id}}">
+        <input type="hidden" name="oper" value="add">
+        
         <div class="row">
           
           <div class="col form-group">
             <label class="form-label">Kelancaran</label>
-            <input type="text" class="form-control" placeholder="Kelancaran" name="kelancaran">
+            <input type="number" class="form-control" placeholder="Kelancaran" name="kelancaran">
           </div>
 
           <div class="col form-group">
             <label class="form-label">Tajwid</label>
-            <input type="text" class="form-control" placeholder="Tajwid" name="tajwid">
+            <input type="number" class="form-control" placeholder="Tajwid" name="tajwid">
           </div>
 
         </div>
@@ -28,12 +32,12 @@
 
           <div class="col form-group">
             <label class="form-label">Tarannum</label>
-            <input type="text" class="form-control" placeholder="Tarannum" name="tarannum">
+            <input type="number" class="form-control" placeholder="Tarannum" name="tarannum">
           </div>
 
           <div class="col form-group">
             <label class="form-label">Overall</label>
-            <input type="text" class="form-control" placeholder="Overall" name="overall">
+            <input type="number" class="form-control" placeholder="Overall" name="overall">
           </div>
 
         </div>
@@ -52,12 +56,12 @@
           <textarea class="form-control" name="example-textarea-input" rows="3" placeholder="Komen Ustad" name="komen"></textarea>
         </div>
 
+        <button type="submit" class="btn btn-primary float-right ml-2">Save changes</button>
+        <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancel</button>
+
 	    </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
     </div>
   </div>
 </div>

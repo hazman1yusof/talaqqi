@@ -131,7 +131,6 @@
           </div>
         </div>
 
-        <hr>
         <button type="submit" class="btn btn-primary float-right ml-2">Save changes</button>
         <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancel</button>
 
