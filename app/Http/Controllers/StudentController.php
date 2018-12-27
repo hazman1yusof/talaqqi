@@ -28,18 +28,7 @@ class StudentController extends Controller
     	$talaqqi = DB::table('talaqqi')
     				->where('user_id','=',$id)
     				->orderBy('adddate', 'desc')
-    				->offset($request->offset)
-    				->limit($request->limit)
-    				->get();
-    	// dd($talaqqi);
-
-    	// $talaqqi = DB::table('talaqqi')
-    	// 			->where('user_id','=',$id)
-    	// 			->orderBy('adddate', 'desc')
-    	// 			->paginate(10);
-
-
-    	// dd(DB::getQueryLog());
+    				->paginate(10);
 
         return view('student_detail',compact('user','talaqqi'));
     }
@@ -72,19 +61,41 @@ class StudentController extends Controller
     public function talaqqi(Request $request){
 
     	if($request->oper == 'add'){
+
+            $overall = round(($request->tajwid+$request->tarannum+$request->kefasihan+$request->kelancaran)/4);
+
 	    	DB::table('talaqqi')
 	    		->insert([
 	    			'user_id' => $request->user_id,
 	    			'tajwid' => $request->tajwid,
 	    			'tarannum' => $request->tarannum,
-	    			'tartil' => $request->tartil,
+	    			'kefasihan' => $request->kefasihan,
 	    			'kelancaran' => $request->kelancaran,
-	    			'overall' => $request->overall,
+	    			'overall' => $overall,
 	    			'komen' => $request->komen,
 	    			'ayat' => $request->ayat,
 	    			'adddate' => Carbon::now("Asia/Kuala_Lumpur")
 	    		]);
-    	}
+    	}else if($request->oper == 'edit'){
+            $overall = round(($request->tajwid+$request->tarannum+$request->kefasihan+$request->kelancaran)/4);
+
+            DB::table('talaqqi')
+                ->where('id','=',$request->id)
+                ->update([
+                    'tajwid' => $request->tajwid,
+                    'tarannum' => $request->tarannum,
+                    'kefasihan' => $request->kefasihan,
+                    'kelancaran' => $request->kelancaran,
+                    'overall' => $overall,
+                    'komen' => $request->komen,
+                    'ayat' => $request->ayat
+                ]);
+
+        }else if($request->oper == 'del'){
+            DB::table('talaqqi')
+                ->where('id','=',$request->id)
+                ->delete();
+        }
 
 
     	return back();

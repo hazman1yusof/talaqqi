@@ -11,6 +11,7 @@
       <div class="modal-body">
 	    <form method="POST" action="/talaqqi" id="talaqqiform">
         @csrf
+        <input type="hidden" name="id" value="">
         <input type="hidden" name="user_id" value="{{$user->id}}">
         <input type="hidden" name="oper" value="add">
         
@@ -36,8 +37,8 @@
           </div>
 
           <div class="col form-group">
-            <label class="form-label">Overall</label>
-            <input type="number" class="form-control" placeholder="Overall" name="overall">
+            <label class="form-label">Kefasihan</label>
+            <input type="number" class="form-control" placeholder="Kefasihan" name="kefasihan">
           </div>
 
         </div>
