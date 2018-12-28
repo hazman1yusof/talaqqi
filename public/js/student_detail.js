@@ -86,7 +86,7 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         $("#talaqqiform input[type=number][name='tajwid']").val($("#data_"+index).data('tajwid'));
         $("#talaqqiform input[type=number][name='kelancaran']").val($("#data_"+index).data('kelancaran'));
         $("#talaqqiform input[name='ayat']").val($("#data_"+index).data('ayat'));
-        $("#talaqqiform textarea[name='komen']").text($("#data_"+index).data('comment'));
+        $("#talaqqiform textarea[name='komen']").val($("#data_"+index).data('comment'));
         $("#talaqqiform input[name='id']").val($("#data_"+index).data('id'));
 
       }

@@ -39,7 +39,7 @@
               <p class="mb-4">
                 {{$user->bio}}
               </p>
-              <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+              <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static">
                 <span class="fe fe-edit-3"></span> Edit Bio
               </button>
             </div>
@@ -80,7 +80,7 @@
                 <h3 class="card-title">Progress Chart</h3>
               </span>
               <span class="col text-right">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalmarkah" data-oper='add'><span class="fa fa-plus"></span> Markah Baru</button>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalmarkah" data-oper='add' data-backdrop="static"><span class="fa fa-plus"></span> Markah Baru</button>
               </span>
         	  </div>
             <div class="card-header">
@@ -126,7 +126,7 @@
                   </span>
                   <span class="col text-right"><span class="span-ayat text-muted" id="ayat"> bakharah, ayat 21</span></span>
 
-                  <button type="button" class="btn btn-primary btn-sm ml-auto" data-toggle="modal" data-target="#modalmarkah" data-oper='edit'>Edit</button>
+                  <button type="button" class="btn btn-primary btn-sm ml-auto" data-toggle="modal" data-target="#modalmarkah" data-oper='edit' data-backdrop="static">Edit</button>
 
                 </div>
 

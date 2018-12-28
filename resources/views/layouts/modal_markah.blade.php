@@ -19,12 +19,12 @@
           
           <div class="col form-group">
             <label class="form-label">Kelancaran</label>
-            <input type="number" class="form-control" placeholder="Kelancaran" name="kelancaran">
+            <input type="number" class="form-control" placeholder="Kelancaran" name="kelancaran" step=".01">
           </div>
 
           <div class="col form-group">
             <label class="form-label">Tajwid</label>
-            <input type="number" class="form-control" placeholder="Tajwid" name="tajwid">
+            <input type="number" class="form-control" placeholder="Tajwid" name="tajwid" step=".01">
           </div>
 
         </div>
@@ -33,12 +33,12 @@
 
           <div class="col form-group">
             <label class="form-label">Tarannum</label>
-            <input type="number" class="form-control" placeholder="Tarannum" name="tarannum">
+            <input type="number" class="form-control" placeholder="Tarannum" name="tarannum" step=".01">
           </div>
 
           <div class="col form-group">
             <label class="form-label">Kefasihan</label>
-            <input type="number" class="form-control" placeholder="Kefasihan" name="kefasihan">
+            <input type="number" class="form-control" placeholder="Kefasihan" name="kefasihan" step=".01">
           </div>
 
         </div>
@@ -47,14 +47,14 @@
 
           <div class="col form-group">
             <label class="form-label">Surah / ayat terakhir</label>
-            <input type="text" class="form-control" placeholder="Surah / ayat terakhir" name="ayat">
+            <input type="text" class="form-control" placeholder="Surah, ayat terakhir" name="ayat">
           </div>
 
         </div>
 
         <div class="form-group">
           <label class="form-label">Komen Ustad</label>
-          <textarea class="form-control" name="example-textarea-input" rows="3" placeholder="Komen Ustad" name="komen"></textarea>
+          <textarea class="form-control" rows="3" placeholder="Komen Ustad" name="komen"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary float-right ml-2">Save changes</button>
