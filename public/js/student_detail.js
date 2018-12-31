@@ -11,10 +11,10 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
           labels: true,
           type: 'spline', // default type of chart
           selection: {
-          grouped: true
-        },
+            grouped: true
+          },
           onclick: function (d, i) {
-            markah_upd((d.index-9)*-1);
+            markah_upd(d.index);
           },
         },
         axis: {
@@ -59,23 +59,23 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
 
       var myChart = new Chart(ctx, config);
 
-      markah_upd(-0);
-      function markah_upd(index){
+      markah_upd($('#lastid').data('id'));
+      function markah_upd(index_){
+        var index = (index_-$('#lastid').data('id'))*-1 //tukar sebab dia terbalik 0-9 ke 9-0
         var markah_arr =  $("#data_"+index).data('markah').split(',');
         var period = $("#data_"+index).data('period');
         var ayat = $("#data_"+index).data('ayat');
         config.data.datasets[0].data = $("#data_"+index).data('markah').split(',');
         myChart.update();
 
+        //markah tag
         $('.span-header').text(period);
         $('.span-ayat').text(ayat);
-
         $('#tag-overall').text($("#data_"+index).data('overall'));
         $('#tag-kefasihan').text(markah_arr[0]);
         $('#tag-tarannum').text(markah_arr[1]);
         $('#tag-tajwid').text(markah_arr[2]);
         $('#tag-kelancaran').text(markah_arr[3]);
-
         $("#comment").fadeOut(100, function() {
             $(this).text($('#data_'+index).data('comment')).fadeIn(100);
         });
@@ -88,6 +88,9 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         $("#talaqqiform input[name='ayat']").val($("#data_"+index).data('ayat'));
         $("#talaqqiform textarea[name='komen']").val($("#data_"+index).data('comment'));
         $("#talaqqiform input[name='id']").val($("#data_"+index).data('id'));
+
+        //selected value dekat chart
+        chart.xgrids([{value: index_, class: 'grid4', text: 'OVERALL'}]);
 
       }
 
@@ -132,6 +135,11 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
       $('#bioform input[name=id_c]').val(pad('00000',$('#bioform input[name=id]').val(),true));
       $('#bioform select[name=gender]').val($('#bioform input[name=gender_h]').val());
       $('#bioform select[name=marital]').val($('#bioform input[name=marital_h]').val());
+
+      $('.custom-file-input').on('change', function() { 
+         let fileName = $(this).val().split('\\').pop(); 
+         $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+      });
     
     });
   });

@@ -18,6 +18,12 @@
     padding: 0.5rem !important;
     text-align: center;
   }
+  .c3-xgrid-line.grid4 line {
+    stroke: pink;
+  }
+  .c3-xgrid-line.grid4 text {
+      fill: pink;
+  }
 @endsection
 
 @section('page')
@@ -33,7 +39,7 @@
           <div class="card card-profile">
             <div class="card-header" style="background-image: url({{ asset('demo/photos/eberhard-grossgasteiger-311213-500.jpg') }});"></div>
             <div class="card-body text-center">
-              <img class="card-profile-img" src="{{ asset('demo/faces/male/16.jpg') }}">
+              <img class="card-profile-img" src="{{env('APP_URL')}}thumbnail/{{$user->image_path}}">
               <h3 class="mb-3">{{$user->firstname}} {{$user->lastname}}</h3>
               <p class="text-muted mb-0"></p>
               <p class="mb-4">
@@ -47,7 +53,7 @@
           <div class="card">
             <div class="card-body">
               <div class="media">
-                <span class="avatar avatar-xxl mr-5" style="background-image: url({{ asset('demo/faces/male/16.jpg') }})"></span>
+                <span class="avatar avatar-xxl mr-5" style="background-image: url({{env('APP_URL')}}thumbnail/{{$user->image_path}})"></span>
                 <div class="media-body">
                   <h4 class="m-0">Hazman Yusof</h4>
                   <p class="text-muted mb-0">Student</p>
@@ -161,7 +167,7 @@
                   <ul class="list-group card-list-group">
                     <li class="list-group-item py-5">
                       <div class="media">
-                        <div class="media-object avatar avatar-md mr-4" style="background-image: url({{ asset('demo/faces/male/16.jpg') }}"></div>
+                        <div class="media-object avatar avatar-md mr-4" style="background-image: url({{env('APP_URL')}}thumbnail/{{$user->image_path}})"></div>
                         <div class="media-body">
                           <div class="media-heading">
                             <h5>Uwais Qorny</h5>

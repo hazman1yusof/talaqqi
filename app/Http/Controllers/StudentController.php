@@ -8,6 +8,9 @@ use DateTime;
 use Carbon\Carbon;
 use Auth;
 use DB;
+use Storage;
+use Image;
+use File;
 
 class StudentController extends Controller
 {
@@ -34,15 +37,25 @@ class StudentController extends Controller
     }
 
     public function bio(Request $request){
-    	// dd($request);
+
+
+        $bio = DB::table('users')->where('id','=',$request->id);
+
+    	if(!empty($request->file('image_file'))){
+			File::delete('uploads/'.$bio->first()->image_path);
+    		$image_path = $request->file('image_file')->store('image', 'public_uploads');
+
+    	}else{
+    		$image_path = $bio->first()->image_path;
+
+    	}
 
     	//save changes
-    	DB::table('users')
-    		->where('id','=',$request->id)
-    		->update([
+    	$bio->update([
     			'username' => $request->username,
     			'firstname' => $request->firstname,
     			'lastname' => $request->lastname,
+    			'image_path' => $image_path,
     			'bio' => $request->bio,
     			'facebook' => $request->facebook,
     			'twitter' => $request->twitter,
@@ -62,7 +75,7 @@ class StudentController extends Controller
 
     	if($request->oper == 'add'){
 
-            $overall = round(($request->tajwid+$request->tarannum+$request->kefasihan+$request->kelancaran)/4);
+            $overall = round(($request->tajwid+$request->tarannum+$request->kefasihan+$request->kelancaran)/4, 2);
 
 	    	DB::table('talaqqi')
 	    		->insert([
@@ -77,7 +90,7 @@ class StudentController extends Controller
 	    			'adddate' => Carbon::now("Asia/Kuala_Lumpur")
 	    		]);
     	}else if($request->oper == 'edit'){
-            $overall = round(($request->tajwid+$request->tarannum+$request->kefasihan+$request->kelancaran)/4);
+            $overall = round(($request->tajwid+$request->tarannum+$request->kefasihan+$request->kelancaran)/4, 2);
 
             DB::table('talaqqi')
                 ->where('id','=',$request->id)

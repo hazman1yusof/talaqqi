@@ -46,7 +46,7 @@
         <div class="row">
 
           <div class="col form-group">
-            <label class="form-label">Surah / ayat terakhir</label>
+            <label class="form-label">Surah, ayat terakhir</label>
             <input type="text" class="form-control" placeholder="Surah, ayat terakhir" name="ayat">
           </div>
 

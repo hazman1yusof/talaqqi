@@ -21,7 +21,8 @@ paths: {
 'vector-map-de': 'assets/js/vendors/jquery-jvectormap-de-merc',
 'vector-map-world': 'assets/js/vendors/jquery-jvectormap-world-mill',
 'circle-progress': 'assets/js/vendors/circle-progress.min',
-'chartjs':['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min','assets/js/vendors/Chart.min']
+'chartjs':['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min','assets/js/vendors/Chart.min'],
+
 }
 });
 window.tabler = {

@@ -27,3 +27,9 @@ Route::get('/mission', 'HomeController@mission');
 Route::get('/blog', 'HomeController@blog');
 
 Route::get('/contact', 'HomeController@contact');
+
+Route::get('/thumbnail/{folder}/{image_path}', function($folder,$image_path){
+    $img = Image::make('uploads/'.$folder.'/'.$image_path)->resize(96, 96);
+
+	return $img->response();
+});

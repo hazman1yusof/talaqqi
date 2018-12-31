@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-	    <form method="POST" action="/student" id="bioform">
+	    <form method="POST" action="/student" id="bioform" enctype="multipart/form-data">
         @csrf
 
 	      <div class="form-group d-flex">
@@ -27,6 +27,19 @@
             <label class="form-label">User ID</label>
             <input type="text" class="form-control" placeholder="Last Name" value="{{$user->id}}" disabled name="id_c">
             <input type="hidden" name="id" value="{{$user->id}}">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Bio Image</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="image_file" accept="image/*" name="image_file" required>
+              <label class="custom-file-label" for="image_file">Choose Image</label>
+            </div>
           </div>
         </div>
 
