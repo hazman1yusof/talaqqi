@@ -13,9 +13,9 @@
 
 Route::get('/student', 'StudentController@index');
 
-Route::get('/student/{id}', 'StudentController@detail');
-Route::post('/student', 'StudentController@bio');
-Route::post('/talaqqi', 'StudentController@talaqqi');
+Route::get('/student/{id}', 'StudentDetailController@detail');
+Route::post('/student', 'StudentDetailController@bio');
+Route::post('/talaqqi', 'StudentDetailController@talaqqi');
 
 Route::get('/home', 'HomeController@home');
 Route::get('/', 'HomeController@home');
