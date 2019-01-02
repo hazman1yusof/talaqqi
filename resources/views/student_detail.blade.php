@@ -48,6 +48,9 @@
               <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static">
                 <span class="fe fe-edit-3"></span> Edit Bio
               </button>
+              <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#passwordChange" data-backdrop="static">
+                <span class="fe fe-edit-3"></span> Change Password
+              </button>
             </div>
           </div>
           <div class="card">
@@ -55,8 +58,8 @@
               <div class="media">
                 <span class="avatar avatar-xxl mr-5" style="background-image: url({{env('APP_URL')}}thumbnail/{{$user->image_path}})"></span>
                 <div class="media-body">
-                  <h4 class="m-0">Hazman Yusof</h4>
-                  <p class="text-muted mb-0">Student</p>
+                  <h4 class="m-0">{{$user->firstname}} {{$user->lastname}}</h4>
+                  <p class="text-muted mb-0">Talaqqi Student</p>
                   <ul class="social-links list-inline mb-0 mt-2">
                     <li class="list-inline-item">
                       <a href="javascript:void(0)" title="{{$user->facebook}}" data-toggle="tooltip"><i class="fa fa-facebook"></i></a>
@@ -103,8 +106,6 @@
               @foreach($talaqqi as $index => $obj )
                 <span talaqqi id="data_{{$index}}" data-ayat="{{$obj->ayat}}" data-overall="{{$obj->overall}}" data-markah="{{$obj->kefasihan}}, {{$obj->tajwid}}, {{$obj->tarannum}}, {{$obj->kelancaran}}" data-period="{{\Carbon\Carbon::parse($obj->adddate)->toFormattedDateString()}}" data-comment="{{$obj->komen}}" data-id="{{$obj->id}}" data-kefasihan="{{$obj->kefasihan}}" data-tajwid="{{$obj->tajwid}}" data-tarannum="{{$obj->tarannum}}" data-kelancaran="{{$obj->kelancaran}}"></span>
               @endforeach
-
-                <span id="lastid" data-id="{{$index}}"></span>
 
         	    <div id="chart-wrapper" style="height: 16rem;cursor: pointer;"></div>
               <div class="d-flex">
@@ -167,7 +168,7 @@
                   <ul class="list-group card-list-group">
                     <li class="list-group-item py-5">
                       <div class="media">
-                        <div class="media-object avatar avatar-md mr-4" style="background-image: url({{env('APP_URL')}}thumbnail/{{$user->image_path}})"></div>
+                        <div class="media-object avatar avatar-md mr-4" style="background-image: url({{env('APP_URL')}}thumbnail/image/13925176_536584779877695_896856907230760834_n.jpg)"></div>
                         <div class="media-body">
                           <div class="media-heading">
                             <h5>Uwais Qorny</h5>
@@ -192,7 +193,7 @@
 </div>
 
 @include('layouts.modal_bio')
-
+@include('layouts.modal_password')
 @include('layouts.modal_markah')
 
 @endsection

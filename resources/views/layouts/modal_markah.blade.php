@@ -19,12 +19,12 @@
           
           <div class="col form-group">
             <label class="form-label">Kelancaran</label>
-            <input type="number" class="form-control" placeholder="Kelancaran" name="kelancaran" step=".01">
+            <input type="number" class="form-control" placeholder="Kelancaran" name="kelancaran" step=".01" required>
           </div>
 
           <div class="col form-group">
             <label class="form-label">Tajwid</label>
-            <input type="number" class="form-control" placeholder="Tajwid" name="tajwid" step=".01">
+            <input type="number" class="form-control" placeholder="Tajwid" name="tajwid" step=".01" required>
           </div>
 
         </div>
@@ -33,12 +33,12 @@
 
           <div class="col form-group">
             <label class="form-label">Tarannum</label>
-            <input type="number" class="form-control" placeholder="Tarannum" name="tarannum" step=".01">
+            <input type="number" class="form-control" placeholder="Tarannum" name="tarannum" step=".01" required>
           </div>
 
           <div class="col form-group">
             <label class="form-label">Kefasihan</label>
-            <input type="number" class="form-control" placeholder="Kefasihan" name="kefasihan" step=".01">
+            <input type="number" class="form-control" placeholder="Kefasihan" name="kefasihan" step=".01" required>
           </div>
 
         </div>

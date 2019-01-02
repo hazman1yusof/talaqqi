@@ -5,12 +5,14 @@ require(['c3', 'jquery'], function (c3, $) {
       loop_chart();
 
       function loop_chart(){
+        var pattern = ['#467fcf', '#e74c3c' , '#5eba00' , '#f1c40f'];
         $( "div[chart-student]" ).each(function( index ) {
-          makechart_student(index)
+          chevron(index,pattern[index%4])
+          makechart_student(index,pattern[index%4])
         })
       }
 
-      function data_overall(index){
+      function data_overall(index,pattern){
         var data_overall = [];
         $( "span[markah-student-"+index+"]" ).each(function( index ) {
           data_overall.push($(this).data('overall'));
@@ -21,7 +23,30 @@ require(['c3', 'jquery'], function (c3, $) {
         return data_overall;
       }
 
-      function makechart_student(index){
+      function chevron(index,pattern){
+        $("span[markah-last-"+index+"]").text(Math.round($("span[markah-student-"+index+"][no='0']").data('overall')));
+        var length = $("span[markah-student-"+index+"]").length;
+        var chevron = `<i class="fe fe-minus">`;
+
+        if(length>=2){
+          let last = $("span[markah-student-"+index+"][no='0']").data('overall');
+          let second_last = $("span[markah-student-"+index+"][no='1']").data('overall');
+
+          if(parseFloat(last)>parseFloat(second_last)){
+            chevron = `<i class="fe fe-chevron-up">`;
+          }else if(parseFloat(last)==parseFloat(second_last)){
+            chevron = `<i class="fe fe-minus">`;
+          }else if(parseFloat(last)<parseFloat(second_last)){
+            chevron = `<i class="fe fe-chevron-down">`;
+          }
+        }
+
+        $("span[chevron-"+index+"]").html(chevron);
+        $("span[chevron-"+index+"], span[markah-last-"+index+"]").css("color",pattern);
+
+      }
+
+      function makechart_student(index,pattern){
         c3.generate({
           bindto: '#chart-student-'+index,
           padding: {
@@ -73,10 +98,14 @@ require(['c3', 'jquery'], function (c3, $) {
             }
           },
           color: {
-            pattern: ['#467fcf']
+            pattern: [pattern] //'#467fcf', '#e74c3c' , '#5eba00' , '#f1c40f'
           }
         });
       }
+
+      $("#bioform input[name='username']").blur(function(){
+        $("#bioform input[name='password']").val($(this).val());
+      })
 
     });
 });

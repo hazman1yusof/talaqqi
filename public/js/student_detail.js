@@ -1,6 +1,10 @@
 require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
     $(document).ready(function(){
 
+      function lastid(){
+        return $("span[talaqqi]").length - 1;
+      }
+
       var chart = c3.generate({
         bindto: '#chart-wrapper', // id of chart wrapper
         data: {
@@ -41,7 +45,7 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
               datasets: [{
               label: "Student A",
               backgroundColor: "rgba(200,0,0,0.2)",
-              data: $('#data_'+$('#lastid').data('id')).data('markah').split(',')
+              data: $('#data_'+lastid()).data('markah').split(',')
           }]
           },
           options: {
@@ -59,9 +63,9 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
 
       var myChart = new Chart(ctx, config);
 
-      markah_upd($('#lastid').data('id'));
+      markah_upd(lastid());
       function markah_upd(index_){
-        var index = (index_-$('#lastid').data('id'))*-1 //tukar sebab dia terbalik 0-9 ke 9-0
+        var index = (index_-lastid())*-1 //tukar sebab dia terbalik 0-9 ke 9-0
         var markah_arr =  $("#data_"+index).data('markah').split(',');
         var period = $("#data_"+index).data('period');
         var ayat = $("#data_"+index).data('ayat');

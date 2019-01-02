@@ -33,20 +33,20 @@
             <div class="card-body">
               <div class="card-value float-right text-blue">
                 <div class="text-right text-primary">
-                  8
-                  <i class="fe fe-chevron-up"></i>
+                  <span markah-last-{{$index}}></span>
+                  <span chevron-{{$index}}><i class="fe fe-chevron-up"></i></span>
                 </div>
               </div>
               <div class="avatar avatar-md mr-3" style="background-image: url({{env('APP_URL')}}thumbnail/{{$student->image_path}})">
               </div>
-              <div class="text-muted"><a href="student/{{$student->id}}">{{$student->firstname}} {{$student->lastname}}</a></div>
+              <div class="text-muted" div-a-{{$index}} ><a href="student/{{$student->id}}">{{$student->firstname}} {{$student->lastname}}</a></div>
             </div>
             <div class="card-chart-bg">
               <div chart-student id="chart-student-{{$index}}" data-id="{{$student->id}}" style="height: 100%"></div>
             </div>
 
             @foreach($student->talaqqi as $index2 => $markah )
-              <span markah-student-{{$index}} data-id="{{$student->id}}" data-overall='{{$markah->overall}}'></span>
+              <span markah-student-{{$index}} no="{{$index2}}" data-id="{{$student->id}}" data-overall='{{$markah->overall}}'></span>
             @endforeach
           </div>
         </div>

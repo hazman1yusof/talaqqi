@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-	    <form method="POST" action="/student" id="bioform" enctype="multipart/form-data">
+	    <form method="POST" action="/student_bio" id="bioform" enctype="multipart/form-data">
         @csrf
 
 	      <div class="form-group d-flex">
@@ -19,7 +19,7 @@
               <span class="input-icon-addon">
                 <i class="fe fe-user"></i>
               </span>
-              <input type="text" class="form-control" placeholder="Username" name="username" value="{{$user->username}}">
+              <input type="text" class="form-control" placeholder="Username" name="username" value="{{$user->username}}" disabled>
             </div>
           </div>
 
@@ -37,7 +37,7 @@
               <span class="input-group-text">Upload</span>
             </div>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="image_file" accept="image/*" name="image_file" required>
+              <input type="file" class="custom-file-input" id="image_file" accept="image/*" name="image_file">
               <label class="custom-file-label" for="image_file">Choose Image</label>
             </div>
           </div>
@@ -46,12 +46,12 @@
         <div class="form-group d-flex">
           <div class="col pl-0">
             <label class="form-label">First Name</label>
-            <input type="text" class="form-control" placeholder="First Name" name="firstname" value="{{$user->firstname}}">
+            <input type="text" class="form-control" placeholder="First Name" name="firstname" value="{{$user->firstname}}" required>
           </div>
 
           <div class="col pr-0">
             <label class="form-label">Last Name</label>
-            <input type="text" class="form-control" placeholder="Last Name" name="lastname" value="{{$user->lastname}}">
+            <input type="text" class="form-control" placeholder="Last Name" name="lastname" value="{{$user->lastname}}" required>
           </div>
         </div>
 

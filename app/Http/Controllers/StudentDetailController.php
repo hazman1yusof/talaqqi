@@ -15,13 +15,11 @@ use File;
 class StudentDetailController extends Controller
 {
 
-    public function index()
-    {   
+    public function index(){   
         return view('student');
     }
 
-    public function detail($id,Request $request)
-    {   
+    public function detail($id,Request $request){   
 
     	DB::enableQueryLog();
     	$user = DB::table('users')
@@ -37,7 +35,6 @@ class StudentDetailController extends Controller
     }
 
     public function bio(Request $request){
-
 
         $bio = DB::table('users')->where('id','=',$request->id);
 
@@ -71,10 +68,27 @@ class StudentDetailController extends Controller
     	return back();
     }
 
+    public function password(Request $request){
+
+        $exist = DB::table('users')->where('id','=',$request->user_id)
+                    ->where('password','='$request->oldpass)
+                    ->exist();
+
+        if($exist){
+            DB::table('users')->where('id','=',$request->user_id)
+                ->update([
+                    'password' => $request->newpass
+                ]);
+        }else{
+            return back()->withErrors(['error', 'Old Password Incorrect']);
+            
+        }
+        return back();
+    }
+
     public function talaqqi(Request $request){
 
     	if($request->oper == 'add'){
-
             $overall = round(($request->tajwid+$request->tarannum+$request->kefasihan+$request->kelancaran)/4, 2);
 
 	    	DB::table('talaqqi')
@@ -109,7 +123,6 @@ class StudentDetailController extends Controller
                 ->where('id','=',$request->id)
                 ->delete();
         }
-
 
     	return back();
     }

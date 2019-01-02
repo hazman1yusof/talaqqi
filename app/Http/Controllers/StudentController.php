@@ -15,13 +15,18 @@ use File;
 class StudentController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {   
 
         DB::enableQueryLog();
         $students = DB::table('users')
-                        ->where('users.role','=','student')
-                        ->orderBy('users.id', 'desc')->paginate(16);
+                        ->where('users.role','=','student');
+
+        if(!empty($request->search)){
+            $students = $students->where('users.username','like','%'.$request->search.'%');
+        }
+
+        $students = $students->orderBy('users.id', 'desc')->paginate(16);
 
         $students->getCollection()->transform(function ($value) {
             $talaqqi = DB::table('talaqqi')
@@ -37,6 +42,24 @@ class StudentController extends Controller
         // dd($students->getCollection());
 
         return view('student',compact('students'));
+    }
+
+    public function add(Request $request){
+        $exists = DB::table('users')->where('username','=',$request->username)->exists();
+
+        if(!$exists){
+            DB::table('users')->insert([
+                'username' => $request->username,
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'password' => $request->password,
+                'role' => $request->password
+            ]);
+        }else{
+            return back()->withErrors(['error', 'Username already used']);
+        }
+        return back();
+        
     }
 
 }

@@ -12,9 +12,11 @@
 */
 
 Route::get('/student', 'StudentController@index');
+Route::post('/student', 'StudentController@add');
 
 Route::get('/student/{id}', 'StudentDetailController@detail');
-Route::post('/student', 'StudentDetailController@bio');
+Route::get('/studentpass', 'StudentDetailController@password');
+Route::post('/student_bio', 'StudentDetailController@bio');
 Route::post('/talaqqi', 'StudentDetailController@talaqqi');
 
 Route::get('/home', 'HomeController@home');
