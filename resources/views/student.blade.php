@@ -8,6 +8,10 @@
 
 @endsection
 
+@section('script')
+    <script src="{{ asset('./js/student.js') }}"></script>
+@endsection
+
 @section('page')
 
 <div class="container">
@@ -15,11 +19,15 @@
     <h1 class="page-title">
       Talaqqi Student
     </h1>
+    <span class="col text-right">
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalstudent" data-oper='add' data-backdrop="static"><span class="fe fe-user-plus"></span> Student Baru</button>
+    </span>
   </div>
   <div class="row row-cards row-deck">
     <div class="col-md-12 col-lg-12">
       <div class="row">
 
+      @foreach($students as $index => $student )
         <div class="col-sm-6 col-lg-3 col-md-3">
           <div class="card">
             <div class="card-body">
@@ -29,79 +37,26 @@
                   <i class="fe fe-chevron-up"></i>
                 </div>
               </div>
-              <div class="avatar avatar-md mr-3" style="background-image: url(demo/faces/male/15.jpg)">
+              <div class="avatar avatar-md mr-3" style="background-image: url({{env('APP_URL')}}thumbnail/{{$student->image_path}})">
               </div>
-              <div class="text-muted"><a href="student/2?offset=0&limit=10">Hazman Yusof</a></div>
+              <div class="text-muted"><a href="student/{{$student->id}}">{{$student->firstname}} {{$student->lastname}}</a></div>
             </div>
             <div class="card-chart-bg">
-              <div id="chart-bg-users-1" style="height: 100%"></div>
+              <div chart-student id="chart-student-{{$index}}" data-id="{{$student->id}}" style="height: 100%"></div>
             </div>
+
+            @foreach($student->talaqqi as $index2 => $markah )
+              <span markah-student-{{$index}} data-id="{{$student->id}}" data-overall='{{$markah->overall}}'></span>
+            @endforeach
           </div>
-          <script>
-            require(['c3', 'jquery'], function (c3, $) {
-              $(document).ready(function() {
-                var chart = c3.generate({
-                  bindto: '#chart-bg-users-1',
-                  padding: {
-                    bottom: -10,
-                    left: -1,
-                    right: -1
-                  },
-                  data: {
-                    names: {
-                      data1: 'Users online'
-                    },
-                    columns: [
-                      ['data1', 7.5, 8, 8, 7.5, 7.5, 6, 6]
-                    ],
-                    type: 'area'
-                  },
-                  legend: {
-                    show: false
-                  },
-                  transition: {
-                    duration: 0
-                  },
-                  point: {
-                    show: false
-                  },
-                  tooltip: {
-                    format: {
-                      title: function (x) {
-                        return '';
-                      }
-                    }
-                  },
-                  axis: {
-                    y: {
-                      padding: {
-                        bottom: 0,
-                      },
-                      show: false,
-                      tick: {
-                        outer: false
-                      }
-                    },
-                    x: {
-                      padding: {
-                        left: 0,
-                        right: 0
-                      },
-                      show: false
-                    }
-                  },
-                  color: {
-                    pattern: ['#467fcf']
-                  }
-                });
-              });
-            });
-          </script>
         </div>
+      @endforeach
 
       </div>
     </div>
   </div>
 </div>
+
+@include('layouts.modal_student')
 
 @endsection

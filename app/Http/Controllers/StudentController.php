@@ -19,22 +19,24 @@ class StudentController extends Controller
     {   
 
         DB::enableQueryLog();
-        $student = DB::table('users')
+        $students = DB::table('users')
                         ->where('users.role','=','student')
-                        ->orderBy('users.id', 'desc');
+                        ->orderBy('users.id', 'desc')->paginate(16);
 
-        $paginate = $student->paginate();
-
-        $paginate->getCollection()->transform(function ($value) {
-            // Your code here
-            dump($value);
+        $students->getCollection()->transform(function ($value) {
+            $talaqqi = DB::table('talaqqi')
+                        ->select('overall')
+                        ->where('user_id','=',$value->id)
+                        ->orderBy('id', 'desc')
+                        ->skip(0)
+                        ->take(7)
+                        ->get()->toArray();
+            $value->talaqqi = $talaqqi;
             return $value;
         });
+        // dd($students->getCollection());
 
-        $student = $student->get();
-        // dd($paginate->getCollection());
-
-        return view('student');
+        return view('student',compact('students'));
     }
 
 }
