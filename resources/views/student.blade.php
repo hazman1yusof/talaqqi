@@ -20,7 +20,9 @@
       Talaqqi Student
     </h1>
     <span class="col text-right">
+      @if(Auth::user()->role == "Admin" ) 
       <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalstudent" data-oper='add' data-backdrop="static"><span class="fe fe-user-plus"></span> Student Baru</button>
+      @endif
     </span>
   </div>
   <div class="row row-cards row-deck">
@@ -31,15 +33,28 @@
         <div class="col-sm-6 col-lg-3 col-md-3">
           <div class="card">
             <div class="card-body">
+              @if($student->level=='1')
+                <span class="badge bg-orange" style="position: absolute; top: 5px;right: 5px">Lv. 1</span>
+              @elseif($student->level=='2')
+                <span class="badge bg-azure" style="position: absolute; top: 5px;right: 5px">Lv. 2</span>
+              @else
+                <span class="badge bg-purple" style="position: absolute; top: 5px;right: 5px">Lv. 3</span>
+              @endif
               <div class="card-value float-right text-blue">
                 <div class="text-right text-primary">
                   <span markah-last-{{$index}}></span>
                   <span chevron-{{$index}}><i class="fe fe-chevron-up"></i></span>
                 </div>
               </div>
-              <div class="avatar avatar-md mr-3" style="background-image: url({{env('APP_URL')}}thumbnail/{{$student->image_path}})">
-              </div>
-              <div class="text-muted" div-a-{{$index}} ><a href="student/{{$student->id}}">{{$student->firstname}} {{$student->lastname}}</a></div>
+              <a href="student/{{$student->id}}" style="text-decoration: none ">
+                @if($student->image_path!='')
+                  <span class="avatar avatar-md mr-3" style="background-image: url({{env('APP_URL')}}/thumbnail/{{$student->image_path}})"></span>
+                @else
+                  <span class="avatar avatar-md mr-3" style="background-image: url({{env('APP_URL')}}/thumbnail/image/avatar-empty.png)"></span>
+                @endif
+              </a>
+              <a href="student/{{$student->id}}">{{$student->name}}</a>
+              <div class="text-muted" div-a-{{$index}} ><p>&nbsp;{{$student->firstname}} {{$student->lastname}}</p></div>
             </div>
             <div class="card-chart-bg">
               <div chart-student id="chart-student-{{$index}}" data-id="{{$student->id}}" style="height: 100%"></div>

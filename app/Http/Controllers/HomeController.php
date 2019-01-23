@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\ticket;
-use App\message;
-use Auth;
 
 class HomeController extends Controller
 {
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function home()
     {   
         return view('home');
@@ -26,9 +27,9 @@ class HomeController extends Controller
         return view('mission');
     }
 
-    public function blog()
+    public function donate()
     {   
-        return view('blog');
+        return view('donate');
     }
 
     public function contact()

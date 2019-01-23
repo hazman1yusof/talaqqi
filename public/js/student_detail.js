@@ -45,7 +45,7 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
               datasets: [{
               label: "Student A",
               backgroundColor: "rgba(200,0,0,0.2)",
-              data: $('#data_'+lastid()).data('markah').split(',')
+              data: data_load()
           }]
           },
           options: {
@@ -60,16 +60,24 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
           }
         }
       }
+      
+      function data_load(){
+        if($('#data_'+lastid()).data('markah') == undefined){
+          return [];
+        }else{
+          return $('#data_'+lastid()).data('markah').split(',');
+        }
+      }
 
       var myChart = new Chart(ctx, config);
 
       markah_upd(lastid());
       function markah_upd(index_){
         var index = (index_-lastid())*-1 //tukar sebab dia terbalik 0-9 ke 9-0
-        var markah_arr =  $("#data_"+index).data('markah').split(',');
+        var markah_arr =  data_load();
         var period = $("#data_"+index).data('period');
         var ayat = $("#data_"+index).data('ayat');
-        config.data.datasets[0].data = $("#data_"+index).data('markah').split(',');
+        config.data.datasets[0].data = data_load();
         myChart.update();
 
         //markah tag
@@ -133,16 +141,35 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         $("#talaqqiform input[name='oper']").val($(this).data('oper'));
         if($(this).data('oper') == 'add'){
           document.getElementById("talaqqiform").reset();
+          $('#talaqqiform select[name=level]').val($('#talaqqiform input[name=level_h]').val());
         }
       });
 
       $('#bioform input[name=id_c]').val(pad('00000',$('#bioform input[name=id]').val(),true));
       $('#bioform select[name=gender]').val($('#bioform input[name=gender_h]').val());
       $('#bioform select[name=marital]').val($('#bioform input[name=marital_h]').val());
+      $('#talaqqiform select[name=level]').val($('#talaqqiform input[name=level_h]').val());
 
       $('.custom-file-input').on('change', function() { 
          let fileName = $(this).val().split('\\').pop(); 
          $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+      });
+
+      modal_alert()
+      function modal_alert(){
+        var modalalert = $("#modalalert-ul").data('has');
+        if(modalalert){
+          $('#modalalert').modal('show')
+        }
+        var modalmsg = $("#modalmsg-ul").data('has');
+        if(modalmsg){
+          $('#modalmsg').modal('show')
+        }
+      }
+
+      $("#hide_li,#show_li").click(function(){
+        $( "#card_li" ).toggle("fast");
+        $( "#hide_li,#show_li" ).toggle();
       });
     
     });

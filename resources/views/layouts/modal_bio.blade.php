@@ -14,12 +14,12 @@
 
 	      <div class="form-group d-flex">
           <div class="col-8 pl-0">
-            <label class="form-label">Username</label>
+            <label class="form-label">name</label>
             <div class="input-icon">
               <span class="input-icon-addon">
                 <i class="fe fe-user"></i>
               </span>
-              <input type="text" class="form-control" placeholder="Username" name="username" value="{{$user->username}}" disabled>
+              <input type="text" class="form-control" placeholder="name" name="name" value="{{$user->name}}" disabled>
             </div>
           </div>
 
@@ -38,7 +38,7 @@
             </div>
             <div class="custom-file">
               <input type="file" class="custom-file-input" id="image_file" accept="image/*" name="image_file">
-              <label class="custom-file-label" for="image_file">Choose Image</label>
+              <label class="custom-file-label" for="image_file">Change Image</label>
             </div>
           </div>
         </div>

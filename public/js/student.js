@@ -24,7 +24,9 @@ require(['c3', 'jquery'], function (c3, $) {
       }
 
       function chevron(index,pattern){
-        $("span[markah-last-"+index+"]").text(Math.round($("span[markah-student-"+index+"][no='0']").data('overall')));
+        var markahlast = Math.round($("span[markah-student-"+index+"][no='0']").data('overall'));
+        if(isNaN(markahlast)){markahlast = 0;}
+        $("span[markah-last-"+index+"]").text(markahlast);
         var length = $("span[markah-student-"+index+"]").length;
         var chevron = `<i class="fe fe-minus">`;
 

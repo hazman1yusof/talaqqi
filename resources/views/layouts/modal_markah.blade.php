@@ -57,6 +57,17 @@
           <textarea class="form-control" rows="3" placeholder="Komen Ustad" name="komen"></textarea>
         </div>
 
+
+        <div class="form-group">
+          <input type="hidden" name="level_h" disabled value="{{$user->level}}">
+          <label class="form-label">Student level</label>
+          <select name="level" class="form-control custom-select">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+        </div>
+
         <button type="submit" class="btn btn-primary float-right ml-2">Save changes</button>
         <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancel</button>
 

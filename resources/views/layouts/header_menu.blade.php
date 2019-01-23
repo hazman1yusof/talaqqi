@@ -15,20 +15,20 @@
           <li class="nav-item">
             <a href="\home" class="nav-link @if(Request::is('home') || Request::is('/')) {{'active'}} @endif"><i class="fe fe-home"></i> Home</a>
           </li>
-          <li class="nav-item">
-            <a href="\about" class="nav-link {{(Request::is('about') ? 'active' : '')}}"><i class="fe fe-compass"></i> About</a>
-          </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="\mission" class="nav-link {{(Request::is('mission') ? 'active' : '')}}"><i class="fe fe-layers"></i> Mission</a>
+          </li> -->
+          <li class="nav-item">
+            <a href="\about" class="nav-link {{(Request::is('about') ? 'active' : '')}}"><i class="fa fa-graduation-cap"></i> Instructor</a>
           </li>
           <li class="nav-item dropdown">
             <a href="\student" class="nav-link  @if(Request::is('student') || Request::is('student/*')) {{'active'}} @endif"><i class="fe fe-users"></i> Students</a>
           </li>
           <li class="nav-item">
-            <a href="\blog" class="nav-link {{(Request::is('blog') ? 'active' : '')}}"><i class="fe fe-book"></i> Blog</a>
+            <a href="\contact" class="nav-link {{(Request::is('contact') ? 'active' : '')}}"><i class="fe fe-map-pin"></i> Contact</a>
           </li>
           <li class="nav-item">
-            <a href="\contact" class="nav-link {{(Request::is('contact') ? 'active' : '')}}"><i class="fe fe-map-pin"></i> Contact</a>
+            <a href="\donate" class="nav-link {{(Request::is('donate') ? 'active' : '')}}" style="color: yellowgreen;"><i class="fe fe-award"></i> Donate</a>
           </li>
         </ul>
       </div>

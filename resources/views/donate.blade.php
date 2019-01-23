@@ -13,7 +13,7 @@
 <div class="container">
   <div class="page-header">
     <h1 class="page-title">
-      blog
+      Donation
     </h1>
   </div>
 
