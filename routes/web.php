@@ -34,7 +34,7 @@ Route::get('/contact', 'HomeController@contact');
 // Route::get('/login', 'SessionController@view');
 
 Route::get('/thumbnail/{folder}/{image_path}', function($folder,$image_path){
-    $img = Image::make('uploads/'.$folder.'/'.$image_path)->resize(96, 96);
+    $img = Image::make('uploads/'.$folder.'/'.$image_path)->fit(96, 96);
 
 	return $img->response();
 });
