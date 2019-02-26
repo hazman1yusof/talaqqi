@@ -10,6 +10,7 @@ use Auth;
 use DB;
 use Storage;
 use Image;
+use Hash;
 use File;
 
 class StudentDetailController extends Controller
@@ -73,14 +74,13 @@ class StudentDetailController extends Controller
 
     public function password(Request $request){
 
-        $exists = DB::table('users')->where('id','=',$request->user_id)
-                    ->where('password','=',$request->oldpass)
-                    ->exists();
+        $user = DB::table('users')->where('id','=',$request->user_id)
+                    ->first();
 
-        if($exists){
+        if(Hash::check($request->oldpass, $user->password)){
             DB::table('users')->where('id','=',$request->user_id)
                 ->update([
-                    'password' => $request->newpass
+                    'password' => Hash::make($request->newpass)
                 ]);
         }else{
             return back()->withErrors(['Old Password Incorrect', 'Old Password Incorrect']);

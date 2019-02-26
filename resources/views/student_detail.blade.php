@@ -55,7 +55,7 @@
         <div class="col-lg-4">
 
           <div class="card card-profile">
-            <div class="card-header" style="background-image: url({{ asset('demo/photos/eberhard-grossgasteiger-311213-500.jpg') }});"></div>
+            <div class="card-header" style="background-image: url({{ asset('demo/eberhard-grossgasteiger-311213-500.jpg') }});"></div>
             <div class="card-body text-center">
               @if($user->image_path!='')
                 <img class="avatar-xxl card-profile-img" src="{{env('APP_URL')}}/thumbnail/{{$user->image_path}}">
@@ -67,13 +67,13 @@
               <p class="mb-4">
                 {{$user->bio}}
               </p>
-              <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static">
+              <button type="button" class="btn btn-outline-primary btn-sm m-2" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static">
                 <span class="fe fe-edit-3"></span> Edit Bio
               </button>
-              <!-- <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#passwordChange" data-backdrop="static">
+              <button type="button" class="btn btn-outline-danger btn-sm m-2" data-toggle="modal" data-target="#passwordChange" data-backdrop="static">
                 <span class="fe fe-edit-3"></span> Change Password
-              </button> -->
-              <button type="button" class="btn btn-outline-success btn-sm">
+              </button>
+              <button type="button" class="btn btn-outline-success btn-sm m-2">
                 <span class="fa fa-whatsapp"></span> Make Appointment
               </button>
             </div>
