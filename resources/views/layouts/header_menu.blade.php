@@ -22,7 +22,7 @@
             <a href="\about" class="nav-link {{(Request::is('about') ? 'active' : '')}}"><i class="fa fa-graduation-cap"></i> Instructor</a>
           </li>
           <li class="nav-item dropdown">
-            <a href="\student" class="nav-link  @if(Request::is('student') || Request::is('student/*')) {{'active'}} @endif"><i class="fe fe-users"></i> Students</a>
+            <a href="\student" class="nav-link  @if(Request::is('student') || Request::is('student/*')) {{'active'}} @endif"><i class="fe fe-users"></i> Student</a>
           </li>
           <li class="nav-item">
             <a href="\contact" class="nav-link {{(Request::is('contact') ? 'active' : '')}}"><i class="fe fe-map-pin"></i> Contact</a>

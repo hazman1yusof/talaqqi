@@ -31,13 +31,15 @@ Route::get('/donate', 'HomeController@donate');
 
 Route::get('/contact', 'HomeController@contact');
 
+Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 // Route::get('/login', 'SessionController@view');
 
-Route::get('/thumbnail/{folder}/{image_path}', function($folder,$image_path){
-    $img = Image::make('uploads/'.$folder.'/'.$image_path)->fit(96, 96);
+// Route::get('/thumbnail/{folder}/{image_path}', function($folder,$image_path){
+//     $img = Image::make('uploads/'.$folder.'/'.$image_path)->fit(96, 96);
 
-	return $img->response();
-});
+// 	return $img->response();
+// });
 
 Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

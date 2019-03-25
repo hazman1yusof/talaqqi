@@ -58,24 +58,26 @@
             <div class="card-header" style="background-image: url({{ asset('demo/eberhard-grossgasteiger-311213-500.jpg') }});"></div>
             <div class="card-body text-center">
               @if($user->image_path!='')
-                <img class="avatar-xxl card-profile-img" src="{{env('APP_URL')}}/thumbnail/{{$user->image_path}}">
+                <img class="avatar-xxl card-profile-img" src="{{env('APP_URL')}}/uploads/{{$user->image_path}}">
               @else
-                <img class="avatar-xxl card-profile-img" src="{{env('APP_URL')}}/thumbnail/image/avatar-empty.png">
+                <img class="avatar-xxl card-profile-img" src="{{env('APP_URL')}}/uploads/image/avatar-empty.png">
               @endif
               <h3 class="mb-3">{{$user->firstname}} {{$user->lastname}}</h3>
               <p class="text-muted mb-0"></p>
               <p class="mb-4">
                 {{$user->bio}}
               </p>
-              <button type="button" class="btn btn-outline-primary btn-sm m-2" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static">
-                <span class="fe fe-edit-3"></span> Edit Bio
-              </button>
-              <button type="button" class="btn btn-outline-danger btn-sm m-2" data-toggle="modal" data-target="#passwordChange" data-backdrop="static">
-                <span class="fe fe-edit-3"></span> Change Password
-              </button>
-              <button type="button" class="btn btn-outline-success btn-sm m-2">
-                <span class="fa fa-whatsapp"></span> Make Appointment
-              </button>
+              @if(Auth::user()->id == $user->id ) 
+                <button type="button" class="btn btn-outline-primary btn-sm m-2" data-toggle="modal" data-target="#exampleModalCenter" data-backdrop="static">
+                  <span class="fe fe-edit-3"></span> Edit Bio
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-sm m-2" data-toggle="modal" data-target="#passwordChange" data-backdrop="static">
+                  <span class="fe fe-edit-3"></span> Change Password
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm m-2">
+                  <span class="fa fa-whatsapp"></span> Make Appointment
+                </button>
+               @endif
             </div>
           </div>
 
@@ -83,9 +85,9 @@
             <div class="card-body">
               <div class="media">
                 @if($user->image_path!='')
-                  <span class="avatar avatar-xxl mr-5" style="background-image: url({{env('APP_URL')}}/thumbnail/{{$user->image_path}})"></span>
+                  <span class="avatar avatar-xxl mr-5" style="background-image: url({{env('APP_URL')}}/uploads/{{$user->image_path}})"></span>
                 @else
-                  <span class="avatar avatar-xxl mr-5" style="background-image: url({{env('APP_URL')}}/thumbnail/image/avatar-empty.png)"></span>
+                  <span class="avatar avatar-xxl mr-5" style="background-image: url({{env('APP_URL')}}/uploads/image/avatar-empty.png)"></span>
                 @endif
                 <div class="media-body">
                   <h4 class="m-0">{{$user->firstname}} {{$user->lastname}}</h4>
@@ -110,7 +112,7 @@
           </div>
 
           <div class="card">
-            <div class="card-header" style="border-bottom: none;border-bottom: none;background-color: #cd201fa6;color: white;">
+            <div class="card-header p-1" style="border-bottom: none;border-bottom: none;background-color: #cd201fa6;color: white;">
               <span class="col">
                 <h3 class="card-title"> <i class="fe fe-alert-triangle"></i> Talaqqi Preparation 
                   <button type="button" class="btn btn-sm btn-icon btn-red float-right" id="hide_li"><i class="fe fe-chevron-up"></i>Hide</button>
@@ -130,23 +132,34 @@
                 <b>Sediakan lima perkara ini</b>
                 <div class="custom-controls-stacked">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="li_1" value="1" @if( $user->li_1 == 1 ) {{'checked'}} @endif >
+                    <input type="checkbox" class="custom-control-input" name="li_1" value="1" 
+                      @if( $user->li_1 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                     <span class="custom-control-label">1. Mushaf Quran yang diiktiraf serta berbalut</span>
                   </label>
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="li_2" value="1" @if( $user->li_2 == 1 ) {{'checked'}} @endif >
+                    <input type="checkbox" class="custom-control-input" name="li_2" value="1" @if( $user->li_2 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                     <span class="custom-control-label">2. Pensil untuk tanda pada mushaf</span>
                   </label>
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="li_3" value="1" @if( $user->li_3 == 1 ) {{'checked'}} @endif >
+                    <input type="checkbox" class="custom-control-input" name="li_3" value="1" @if( $user->li_3 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                     <span class="custom-control-label">3. Buku nota tebal. 400 pages</span>
                   </label>
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="li_4" value="1" @if( $user->li_4 == 1 ) {{'checked'}} @endif >
+                    <input type="checkbox" class="custom-control-input" name="li_4" value="1" @if( $user->li_4 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                     <span class="custom-control-label">4. Pen untuk tulis nota pada buku</span>
                   </label>
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" name="li_5" value="1" @if( $user->li_5 == 1 ) {{'checked'}} @endif >
+                    <input type="checkbox" class="custom-control-input" name="li_5" value="1" @if( $user->li_5 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                     <span class="custom-control-label">5 .Gelas kosong (Hati yang bersedia untuk belajar)</span>
                   </label>
                 </div>
@@ -154,27 +167,40 @@
 
                 <b>Semoga mudah untuk anda dapatkan lima perkara kemudian</b>
                 <label class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" name="li2_1" value="1" @if( $user->li2_1 == 1 ) {{'checked'}} @endif >
+                  <input type="checkbox" class="custom-control-input" name="li2_1" value="1" @if( $user->li2_1 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                   <span class="custom-control-label">1. Dengar bacaan dari Sheikh Husari pada ayat yang nak ditalaqi dgn Ustad Uwais Qotny. Perhatikan waqaf dan ibtidaq serta sebutan huruf</span>
                 </label>
                 <label class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" name="li2_2" value="1" @if( $user->li2_2 == 1 ) {{'checked'}} @endif >
+                  <input type="checkbox" class="custom-control-input" name="li2_2" value="1" @if( $user->li2_2 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                   <span class="custom-control-label">2. Baca nazirah 10 kali</span>
                 </label>
                 <label class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" name="li2_3" value="1" @if( $user->li2_3 == 1 ) {{'checked'}} @endif >
+                  <input type="checkbox" class="custom-control-input" name="li2_3" value="1" @if( $user->li2_3 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                   <span class="custom-control-label">3. Tasmik dengan kawan. Tandakan dengan pensil pada tempat yang salah</span>
                 </label>
                 <label class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" name="li2_4" value="1" @if( $user->li2_4 == 1 ) {{'checked'}} @endif >
+                  <input type="checkbox" class="custom-control-input" name="li2_4" value="1" @if( $user->li2_4 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                   <span class="custom-control-label">4. Ulang baca nazirah 10 kali. Fokus pada tempat yang ditandakan oleh kawan sebelum itu</span>
                 </label>
                 <label class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" name="li2_5" value="1" @if( $user->li2_5 == 1 ) {{'checked'}} @endif >
+                  <input type="checkbox" class="custom-control-input" name="li2_5" value="1" @if( $user->li2_5 == 1 ) {{'checked'}} @endif 
+                      @if(Auth::user()->id != $user->id ) {{'disabled'}} @endif
+                    >
                   <span class="custom-control-label">5. Baca 10 kali nazirah dalam 10 rakaat solat sunat</span>
                 </label>
 
-                <button type="submit" class="btn btn-danger btn-block" style="background-color: #cd201fa6; "><i class="fe fe-check mr-2"></i>Insya Allah</button>
+
+                @if(Auth::user()->id == $user->id )
+                  <button type="submit" class="btn btn-danger btn-block" style="background-color: #cd201fa6; "><i class="fe fe-check mr-2"></i>Insya Allah</button>
+                @endif
 
               </form>
             </div>
@@ -288,7 +314,7 @@
                   <ul class="list-group card-list-group">
                     <li class="list-group-item py-5">
                       <div class="media">
-                        <div class="media-object avatar avatar-md mr-4" style="background-image: url({{env('APP_URL')}}/thumbnail/image/uwaisqorny.jpg)"></div>
+                        <div class="media-object avatar avatar-md mr-4" style="background-image: url({{env('APP_URL')}}/uploads/image/uwaisqorny.jpg)"></div>
                         <div class="media-body">
                           <div class="media-heading">
                             <h5>Uwais Qorny</h5>

@@ -43,13 +43,13 @@
 
             <div class="row">
 	            <div class="col-sm-12 col-md-4 text-center p-2">
-	            	<button type="button" class="btn btn-facebook"><i class="fa fa-facebook mr-2"></i>Facebook</button>
+                <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
 	            </div>
 	            <div class="col-sm-12 col-md-4 text-center p-2">
-					<button type="button" class="btn btn-twitter" ><i class="fa fa-twitter mr-2"></i>Twitter</button>
+                <a href="#" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
 	            </div>
 	            <div class="col-sm-12 col-md-4 text-center p-2">
-					<button type="button" class="btn btn-google"><i class="fa fa-google mr-2"></i>Google</button>
+                <a href="#" class="btn btn-google"><i class="fa fa-google"></i> Google</a>
 	            </div>
             </div>
             

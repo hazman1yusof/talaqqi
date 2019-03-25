@@ -61,11 +61,11 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         }
       }
       
-      function data_load(){
-        if($('#data_'+lastid()).data('markah') == undefined){
+      function data_load(index){
+        if($('#data_'+index).data('markah') == undefined){
           return [];
         }else{
-          return $('#data_'+lastid()).data('markah').split(',');
+          return $('#data_'+index).data('markah').split(',');
         }
       }
 
@@ -74,10 +74,10 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
       markah_upd(lastid());
       function markah_upd(index_){
         var index = (index_-lastid())*-1 //tukar sebab dia terbalik 0-9 ke 9-0
-        var markah_arr =  data_load();
+        var markah_arr =  data_load(index);
         var period = $("#data_"+index).data('period');
         var ayat = $("#data_"+index).data('ayat');
-        config.data.datasets[0].data = data_load();
+        config.data.datasets[0].data = data_load(index);
         myChart.update();
 
         //markah tag

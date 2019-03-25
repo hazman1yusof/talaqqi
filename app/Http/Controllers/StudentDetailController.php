@@ -34,7 +34,7 @@ class StudentDetailController extends Controller
     	$talaqqi = DB::table('talaqqi')
     				->where('user_id','=',$id)
     				->orderBy('adddate', 'desc')
-    				->paginate(10);
+    				->paginate(7);
 
         return view('student_detail',compact('user','talaqqi'));
     }
@@ -44,12 +44,17 @@ class StudentDetailController extends Controller
         $bio = DB::table('users')->where('id','=',$request->id);
 
     	if(!empty($request->file('image_file'))){
+            $file = $request->file('image_file');
+            $image_path = $file->hashName('image');
+
+            $image = Image::make($file)->fit(96, 96);
+
+            Storage::disk('public_uploads')->put($image_path, (string) $image->encode());
+
 			File::delete('uploads/'.$bio->first()->image_path);
-    		$image_path = $request->file('image_file')->store('image', 'public_uploads');
 
     	}else{
     		$image_path = $bio->first()->image_path;
-
     	}
 
     	//save changes

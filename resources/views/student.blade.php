@@ -48,9 +48,9 @@
               </div>
               <a href="student/{{$student->id}}" style="text-decoration: none ">
                 @if($student->image_path!='')
-                  <span class="avatar avatar-md mr-3" style="background-image: url({{env('APP_URL')}}/thumbnail/{{$student->image_path}})"></span>
+                  <span class="avatar avatar-md mr-3" style="background-image: url({{env('APP_URL')}}/uploads/{{$student->image_path}})"></span>
                 @else
-                  <span class="avatar avatar-md mr-3" style="background-image: url({{env('APP_URL')}}/thumbnail/image/avatar-empty.png)"></span>
+                  <span class="avatar avatar-md mr-3" style="background-image: url({{env('APP_URL')}}/uploads/image/avatar-empty.png)"></span>
                 @endif
               </a>
               <a href="student/{{$student->id}}">{{$student->name}}</a>
@@ -67,6 +67,12 @@
         </div>
       @endforeach
 
+      </div>
+
+
+      <div class="d-flex">
+        <button type="button" class="btn btn-lime btn-sm" onclick="location.href='{{$students->previousPageUrl()}}';"  @if(!$students->previousPageUrl()) disabled @endif>Previous</button>
+        <button type="button" class="btn btn-lime btn-sm ml-auto" onclick="location.href='{{$students->nextPageUrl()}}';" @if(!$students->nextPageUrl()) disabled @endif>Next</button>
       </div>
     </div>
   </div>

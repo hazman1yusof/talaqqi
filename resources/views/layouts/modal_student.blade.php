@@ -18,7 +18,7 @@
               <button type="button" class="close" data-dismiss="alert"></button>
               <ul>
                 <li>Only admin can add new student</li>
-                <li>To add new student only set his name, the name need to be unique</li>
+                <li>To add new student only set his name, email</li>
                 <li>Unique ID for the student will be auto generated</li>
                 <li>Password will be set as the same as his name, student need to change his password upon first login</li>
                 <li>User Role is student, admin only for instructor, admin can add marks for student</li>
@@ -33,7 +33,7 @@
                 <span class="input-icon-addon">
                   <i class="fe fe-user"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="name" name="name">
+                <input type="text" class="form-control" placeholder="name" name="name" required>
               </div>
             </div>
 
@@ -44,18 +44,30 @@
             </div>
           </div>
 
+          <div class="form-group d-flex">
+            <div class="col-8 pl-0">
+              <label class="form-label">Email address</label>
+              <div class="input-icon">
+                <span class="input-icon-addon">
+                  <i class="fe fe-mail"></i>
+                </span>
+                <input type="email" class="form-control" placeholder="Email" name="email" required>
+              </div>
+            </div>
+          </div>
+
 
           <div class="form-group d-flex">
             <div class="col-8 pl-0">
               <label class="form-label">Password</label>
               <div class="input-icon">
-                <input type="text" class="form-control" placeholder="password" name="password" readonly>
+                <input type="password" class="form-control" placeholder="password" name="password">
               </div>
             </div>
 
             <div class="col-4 pr-0">
               <label class="form-label">User Role</label>
-              <select name="role" class="form-control custom-select">
+              <select name="role" class="form-control custom-select" required>
                 <option>Student</option>
                 <option>Admin</option>
               </select>
@@ -65,12 +77,12 @@
           <div class="form-group d-flex">
             <div class="col pl-0">
               <label class="form-label">First Name</label>
-              <input type="text" class="form-control" placeholder="First Name" name="firstname" >
+              <input type="text" class="form-control" placeholder="First Name" name="firstname" required>
             </div>
 
             <div class="col pr-0">
               <label class="form-label">Last Name</label>
-              <input type="text" class="form-control" placeholder="Last Name" name="lastname" >
+              <input type="text" class="form-control" placeholder="Last Name" name="lastname" required>
             </div>
           </div>
 

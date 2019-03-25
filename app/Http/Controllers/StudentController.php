@@ -8,6 +8,7 @@ use DateTime;
 use Carbon\Carbon;
 use Auth;
 use DB;
+use Hash;
 use Storage;
 use Image;
 use File;
@@ -21,6 +22,9 @@ class StudentController extends Controller
 
     public function index(Request $request)
     {   
+        if(\Auth::user()->role == "Student"){
+            return redirect('student/'.\Auth::user()->id);
+        }
 
         DB::enableQueryLog();
         $students = DB::table('users')
@@ -50,13 +54,14 @@ class StudentController extends Controller
 
     public function add(Request $request){
         $exists = DB::table('users')->where('name','=',$request->name)->exists();
-
+        
         if(!$exists){
             DB::table('users')->insert([
                 'name' => $request->name,
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
+                'email' => $request->email,
                 'role' => $request->role
             ]);
         }else{

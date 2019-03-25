@@ -24,7 +24,7 @@ class SessionController extends Controller
     				->where('password',$request->password)
     				->first();
     	if($user){
-    		Auth::login($user,!empty($request->remember_me));
+    		Auth::login($user,!empty($request->remember));
 
     		return redirect('/setup/dashboard');
     	}else{

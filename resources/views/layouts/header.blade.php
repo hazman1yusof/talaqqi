@@ -3,8 +3,8 @@
     background: linear-gradient(135deg, rgb(255, 82, 146)   0%,rgba(33,138,174,1) 69%,rgba(24,42,115,1) 89%)">
   <div class="container">
     <div class="d-flex">
-      <a class="header-brand" href="./index.html">
-        <img src="{{ asset('./demo/LOGO-BARU-PROTAZz2-smaller.png')}}" class="header-brand-img" alt="tabler logo">
+      <a class="header-brand" href="{{env('APP_URL')}}">
+        <img src="http://www.uwaisqorny.com/wp-content/uploads/2017/11/LOGO-BARU-PROTAZz2-smaller.png" class="header-brand-img" alt="tabler logo">
       </a>
       <h2 class="mb-0"><i></i></h2>
       <div class="d-flex order-lg-2 ml-auto">
@@ -45,7 +45,7 @@
         @auth
         <div class="dropdown">
           <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-            <span class="avatar" style="background-image: url({{env('APP_URL')}}/thumbnail/{{Auth::user()->image_path}}); border: 1px solid #9E9E9E;"></span>
+            <span class="avatar" style="background-image: url(@if(Auth::user()->image_path!='') {{env('APP_URL')}}/uploads/{{Auth::user()->image_path}} @else {{env('APP_URL')}}/uploads/image/avatar-empty.png) @endif); border: 1px solid #9E9E9E;"></span>
             <span class="ml-2 d-none d-lg-block">
               <span class="text-white">{{ Auth::user()->name }}</span>
               <small class="text-muted d-block mt-1">
@@ -56,9 +56,11 @@
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-            <a class="dropdown-item" href="\student\{{Auth::user()->id}}">
-              <i class="dropdown-icon fe fe-user"></i> Profile
-            </a>
+            @if(Auth::user()->role == "Student" ) 
+              <a class="dropdown-item" href="\student\{{Auth::user()->id}}">
+                <i class="dropdown-icon fe fe-user"></i> Profile
+              </a>
+            @endif
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
               <i class="dropdown-icon fe fe-help-circle"></i> Need help?
