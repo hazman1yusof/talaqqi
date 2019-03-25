@@ -177,4 +177,17 @@ class StudentDetailController extends Controller
             
         return back();
     }
+
+
+    public function delete($id,Request $request){
+        $users = DB::table('users')
+            ->where('id','=',$id)
+            ->delete();
+
+        $talaqqi = DB::table('talaqqi')
+            ->where('user_id','=',$id)
+            ->delete();
+            
+        return back();
+    }
 }

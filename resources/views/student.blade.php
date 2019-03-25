@@ -33,6 +33,7 @@
         <div class="col-sm-6 col-lg-3 col-md-3">
           <div class="card">
             <div class="card-body">
+                <span class="badge bg-red" style="position: absolute; top: 5px;right: 40px"><a class="delete_user" data-href="/delete/{{$student->id}}" data-username="{{$student->name}}" style="color: wheat;cursor: pointer;">Delete</a></span>
               @if($student->level=='1')
                 <span class="badge bg-orange" style="position: absolute; top: 5px;right: 5px">Lv. 1</span>
               @elseif($student->level=='2')

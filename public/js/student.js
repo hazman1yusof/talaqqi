@@ -109,5 +109,14 @@ require(['c3', 'jquery'], function (c3, $) {
         $("#bioform input[name='password']").val($(this).val());
       })
 
+      $("a.delete_user").click(function(){
+        var username =  $(this).data('username');
+        var href =  $(this).data('href');
+        var r = confirm("Are You sure you want to delete user "+username);
+        if (r == true) {
+          window.location.href = "/student"+href;
+        }
+      });
+
     });
 });
