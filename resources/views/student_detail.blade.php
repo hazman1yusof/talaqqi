@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Student: '.$user->name)
+
 @section('corejs')
   
   requirejs.config({
@@ -62,6 +64,7 @@
               @else
                 <img class="avatar-xxl card-profile-img" src="{{env('APP_URL')}}/uploads/image/avatar-empty.png">
               @endif
+              <h5 class="mb-3" style="color: #1f438a;" id="name">{{$user->name}}</h5>
               <h3 class="mb-3">{{$user->firstname}} {{$user->lastname}}</h3>
               <p class="text-muted mb-0"></p>
               <p class="mb-4">
@@ -235,7 +238,7 @@
         	  <div class="card-body"> 
 
               @foreach($talaqqi as $index => $obj )
-                <span talaqqi id="data_{{$index}}" data-ayat="{{$obj->ayat}}" data-overall="{{$obj->overall}}" data-markah="{{$obj->kefasihan}}, {{$obj->tajwid}}, {{$obj->tarannum}}, {{$obj->kelancaran}}" data-period="{{\Carbon\Carbon::parse($obj->adddate)->toFormattedDateString()}}" data-comment="{{$obj->komen}}" data-id="{{$obj->id}}" data-kefasihan="{{$obj->kefasihan}}" data-tajwid="{{$obj->tajwid}}" data-tarannum="{{$obj->tarannum}}" data-kelancaran="{{$obj->kelancaran}}"></span>
+                <span talaqqi id="data_{{$index}}" data-ayat="{{$obj->ayat}}" data-ayat_dari="{{$obj->ayat_dari}}" data-overall="{{$obj->overall}}" data-markah="{{$obj->kelancaran}}, {{$obj->kefasihan}}, {{$obj->tarannum}}, {{$obj->tajwid}} " data-period="{{\Carbon\Carbon::parse($obj->adddate)->toFormattedDateString()}}" data-comment="{{nl2br($obj->komen)}}" data-comment-nl="{{$obj->komen}}" data-id="{{$obj->id}}" data-kefasihan="{{$obj->kefasihan}}" data-tajwid="{{$obj->tajwid}}" data-tarannum="{{$obj->tarannum}}" data-kelancaran="{{$obj->kelancaran}}"></span>
               @endforeach
 
         	    <div id="chart-wrapper" style="height: 16rem;cursor: pointer;"></div>
@@ -249,13 +252,18 @@
           <nav>
             <div class="nav nav-pills" id="nav-tab" role="tablist" style="padding: 1rem 1rem 0rem 1rem;">
                 <a class="col nav-item nav-link active pill_mark" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" >Markah 
-                
+
+
                   @if($user->level=='1')
                     <span class="badge bg-orange" style="position: absolute; top: 5px;right: 5px">Lv. 1</span>
                   @elseif($user->level=='2')
                     <span class="badge bg-azure" style="position: absolute; top: 5px;right: 5px">Lv. 2</span>
-                  @else
+                  @elseif($user->level=='3')
                     <span class="badge bg-purple" style="position: absolute; top: 5px;right: 5px">Lv. 3</span>
+                  @elseif($user->level=='SS')
+                    <span class="badge bg-yellow" style="position: absolute; top: 5px;right: 5px">Lv. SS</span>
+                  @else
+                    <span class="badge bg-purple" style="position: absolute; top: 5px;right: 5px">Lv. -</span>
                   @endif
 
                 </a>
@@ -284,10 +292,10 @@
                 <div class="card-body mx-auto">
                   <div class="tags">
                     <span class="tag">Overall<span class="tag-addon tag-red" id="tag-overall"></span></span>
-                    <span class="tag">Kefasihan<span class="tag-addon tag-cyan" id="tag-kefasihan"></span></span>
+                    <span class="tag">Tartil<span class="tag-addon tag-cyan" id="tag-kelancaran"></span></span>
+                    <span class="tag">Fasohah<span class="tag-addon tag-cyan" id="tag-kefasihan"></span></span>
                     <span class="tag">Tarannum<span class="tag-addon tag-cyan" id="tag-tarannum"></span></span>
                     <span class="tag">Tajwid<span class="tag-addon tag-cyan" id="tag-tajwid"></span></span>
-                    <span class="tag">Kelancaran<span class="tag-addon tag-cyan" id="tag-kelancaran"></span></span>
                   </div>
                   <canvas id="myChart" class="d-none d-md-block"></canvas>
                 </div>

@@ -1,4 +1,4 @@
-require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
+require(['c3', 'chartjs', 'jquery','moment'], function(c3, chartjs, $,moment) {
     $(document).ready(function(){
 
       function lastid(){
@@ -41,9 +41,9 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
       var config = {
           type: 'radar',
           data: {
-              labels: ["Kefasihan", "Tarannum", "Tajwid", "Kelancaran"],
+              labels: ["Tartil", "Fasohah", "Tarannum", "Tajwid"],
               datasets: [{
-              label: "Student A",
+              label: $('#name').text(),
               backgroundColor: "rgba(200,0,0,0.2)",
               data: data_load()
           }]
@@ -70,6 +70,7 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
       }
 
       var myChart = new Chart(ctx, config);
+      var lastindex;
 
       markah_upd(lastid());
       function markah_upd(index_){
@@ -84,22 +85,16 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         $('.span-header').text(period);
         $('.span-ayat').text(ayat);
         $('#tag-overall').text($("#data_"+index).data('overall'));
-        $('#tag-kefasihan').text(markah_arr[0]);
-        $('#tag-tarannum').text(markah_arr[1]);
-        $('#tag-tajwid').text(markah_arr[2]);
-        $('#tag-kelancaran').text(markah_arr[3]);
+        $('#tag-kefasihan').text($("#data_"+index).data('kefasihan'));
+        $('#tag-tarannum').text($("#data_"+index).data('tarannum'));
+        $('#tag-tajwid').text($("#data_"+index).data('tajwid'));
+        $('#tag-kelancaran').text($("#data_"+index).data('kelancaran'));
         $("#comment").fadeOut(100, function() {
-            $(this).text($('#data_'+index).data('comment')).fadeIn(100);
+            $(this).html($('#data_'+index).data('comment')).fadeIn(100);
         });
 
-        //tukar markah-form
-        $("#talaqqiform input[type=number][name='kefasihan']").val($("#data_"+index).data('kefasihan'));
-        $("#talaqqiform input[type=number][name='tarannum']").val($("#data_"+index).data('tarannum'));
-        $("#talaqqiform input[type=number][name='tajwid']").val($("#data_"+index).data('tajwid'));
-        $("#talaqqiform input[type=number][name='kelancaran']").val($("#data_"+index).data('kelancaran'));
-        $("#talaqqiform input[name='ayat']").val($("#data_"+index).data('ayat'));
-        $("#talaqqiform textarea[name='komen']").val($("#data_"+index).data('comment'));
-        $("#talaqqiform input[name='id']").val($("#data_"+index).data('id'));
+        lastindex = index;
+        // populate_form(index);
 
         //selected value dekat chart
         chart.xgrids([{value: index_, class: 'grid4', text: 'OVERALL'}]);
@@ -115,6 +110,18 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         data_overall = data_overall.reverse();
 
         return data_overall;
+      }
+
+      function populate_form(index){
+        //tukar markah-form
+        $("#talaqqiform input[type=number][name='kefasihan']").val($("#data_"+index).data('kefasihan'));
+        $("#talaqqiform input[type=number][name='tarannum']").val($("#data_"+index).data('tarannum'));
+        $("#talaqqiform input[type=number][name='tajwid']").val($("#data_"+index).data('tajwid'));
+        $("#talaqqiform input[type=number][name='kelancaran']").val($("#data_"+index).data('kelancaran'));
+        $("#talaqqiform input[name='ayat_dari']").val($("#data_"+index).data('ayat_dari'));
+        $("#talaqqiform input[name='ayat']").val($("#data_"+index).data('ayat'));
+        $("#talaqqiform textarea[name='komen']").val($("#data_"+index).data('comment-nl'));
+        $("#talaqqiform input[name='id']").val($("#data_"+index).data('id'));
       }
 
       function data_date(){
@@ -142,6 +149,11 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         if($(this).data('oper') == 'add'){
           document.getElementById("talaqqiform").reset();
           $('#talaqqiform select[name=level]').val($('#talaqqiform input[name=level_h]').val());
+          var index = (lastid()-lastid())*-1
+          $("#talaqqiform input[name='ayat_dari']").val($("#data_"+index).data('ayat'));
+          start_timer_reset();
+        }else{
+          populate_form(lastindex);
         }
       });
 
@@ -171,6 +183,91 @@ require(['c3', 'chartjs', 'jquery'], function(c3, chartjs, $) {
         $( "#card_li" ).toggle("fast");
         $( "#hide_li,#show_li" ).toggle();
       });
+
+      $("#start_timer").click(function(){
+        var oper = $(this).data('oper');
+        if(oper == 'start'){
+          $(this).data('oper','pause');
+          start_timer();
+        }else if(oper == 'pause'){
+          $(this).data('oper','start');
+          pause_timer();
+        }
+      });
+
+      // function start_timer(){
+      //   var now = moment(); // new Date().getTime();
+      //   var then = moment().add(4, 'minutes'); // new Date(now + 60 * 1000);
+
+      //   $(".now").text(moment(now).format('h:mm:ss a'));
+      //   $(".then").text(moment(then).format('h:mm:ss a'));
+      //   $(".duration").text(moment(now).to(then));
+      //   (function timerLoop() {
+      //     $(".difference > span").text(moment().to(then));
+      //     $(".countdown").text(countdown(then).toString());
+      //     requestAnimationFrame(timerLoop);
+      //   })();
+      // }
+
+      function decide_timer_length(){
+        var level = $('#talaqqiform input[name=level_h]').val();
+        switch(level) {
+          case "1":
+            return {txt:"04:00",minute:4};
+            break;
+          case "2":
+            return {txt:"06:00",minute:6};
+            break;
+          case "3":
+            return {txt:"09:00",minute:9};
+            break;
+          case "SS":
+            return {txt:"15:00",minute:15};
+            break;
+          default:
+            return {txt:"04:00",minute:4};
+        }
+      }
+
+      function start_timer_reset(){
+        $( "#start_timer" ).removeClass( "btn-outline-danger" ).removeClass( "btn-outline-success" ).addClass( "btn-outline-info" );
+        $('.countdown').text(decide_timer_length().txt);
+        timer={interval:null,countDownDate:null,reset:true,reset_moment:null};
+      }
+
+
+      var timer={interval:null,countDownDate:null,reset:true,reset_moment:null};
+      function start_timer(){
+        $( "#start_timer" ).removeClass( "btn-outline-danger" ).removeClass( "btn-outline-success" ).addClass( "btn-outline-info" );
+        if(timer.reset){
+          timer.countDownDate = moment().add(decide_timer_length().minute, 'minutes');
+        }else{
+          var time_pausing = timer.reset_moment.diff(moment());
+          timer.countDownDate = timer.countDownDate.subtract(time_pausing, 'milliseconds');
+        }
+
+        timer.interval = setInterval(function() {
+          diff = timer.countDownDate.diff(moment());
+      
+          if (diff <= 0) {
+            clearInterval(timer.interval);
+            $("#start_timer").data('oper','expired');
+             // If the count down is finished, write some text 
+            $('.countdown').text("EXPIRED");
+            $( "#start_timer" ).removeClass( "btn-outline-info" ).removeClass( "btn-outline-success" ).addClass( "btn-outline-danger" );
+          } else
+            $('.countdown').text(moment.utc(diff).format("mm:ss"));
+
+        }, 1000);
+      }
+
+      function pause_timer(){
+        clearInterval(timer.interval);
+        timer.reset=false;
+        timer.reset_moment=moment();
+        $( "#start_timer" ).removeClass( "btn-outline-danger" ).removeClass( "btn-outline-info" ).addClass( "btn-outline-success" );
+      }
+
     
     });
   });

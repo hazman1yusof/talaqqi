@@ -33,13 +33,18 @@
         <div class="col-sm-6 col-lg-3 col-md-3">
           <div class="card">
             <div class="card-body">
-                <span class="badge bg-red" style="position: absolute; top: 5px;right: 40px"><a class="delete_user" data-href="/delete/{{$student->id}}" data-username="{{$student->name}}" style="color: wheat;cursor: pointer;">Delete</a></span>
+                <span class="badge bg-green" style="position: absolute; top: 5px;right: 50px"><a class="excel_dl" href="student/excel/{{$student->id}}" style="color: white;cursor: pointer;">Excel</a></span>
+                <span class="badge bg-red" style="position: absolute; top: 5px;right: 5px"><a class="delete_user" data-href="/delete/{{$student->id}}" data-username="{{$student->name}}" style="color: white;cursor: pointer;">Delete</a></span>
               @if($student->level=='1')
-                <span class="badge bg-orange" style="position: absolute; top: 5px;right: 5px">Lv. 1</span>
+                <span class="badge bg-orange" style="position: absolute; top: 5px;left: 5px">Lv. 1</span>
               @elseif($student->level=='2')
-                <span class="badge bg-azure" style="position: absolute; top: 5px;right: 5px">Lv. 2</span>
+                <span class="badge bg-azure" style="position: absolute; top: 5px;left: 5px">Lv. 2</span>
+              @elseif($student->level=='3')
+                <span class="badge bg-purple" style="position: absolute; top: 5px;left: 5px">Lv. 3</span>
+              @elseif($student->level=='SS')
+                <span class="badge bg-yellow" style="position: absolute; top: 5px;left: 5px">Lv. SS</span>
               @else
-                <span class="badge bg-purple" style="position: absolute; top: 5px;right: 5px">Lv. 3</span>
+                <span class="badge bg-purple" style="position: absolute; top: 5px;left: 5px">Lv. -</span>
               @endif
               <div class="card-value float-right text-blue">
                 <div class="text-right text-primary">

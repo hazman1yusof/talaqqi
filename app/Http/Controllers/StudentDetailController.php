@@ -12,6 +12,8 @@ use Storage;
 use Image;
 use Hash;
 use File;
+use App\Exports\TalaqqiExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentDetailController extends Controller
 {
@@ -109,6 +111,7 @@ class StudentDetailController extends Controller
 	    			'kelancaran' => $request->kelancaran,
 	    			'overall' => $overall,
 	    			'komen' => $request->komen,
+                    'ayat_dari' => $request->ayat_dari,
 	    			'ayat' => $request->ayat,
 	    			'adddate' => Carbon::now("Asia/Kuala_Lumpur")
 	    		]);
@@ -132,6 +135,7 @@ class StudentDetailController extends Controller
                     'kelancaran' => $request->kelancaran,
                     'overall' => $overall,
                     'komen' => $request->komen,
+                    'ayat_dari' => $request->ayat_dari,
                     'ayat' => $request->ayat
                 ]);
 
@@ -151,7 +155,7 @@ class StudentDetailController extends Controller
     }
 
     public function student_li(Request $request){
-
+        //yang ni untuk janji dia tu semua, yang save tu nama inssyaAllah tu..
         $newarr = [
             "li_1" => 0,
             "li_2" => 0,
@@ -187,7 +191,15 @@ class StudentDetailController extends Controller
         $talaqqi = DB::table('talaqqi')
             ->where('user_id','=',$id)
             ->delete();
-            
+
         return back();
+    }
+
+    public function excel($id,Request $request){
+        $user = DB::table('users')
+                    ->where('id','=',$id)
+                    ->first();
+
+        return Excel::download(new TalaqqiExport($id), $user->name.' talaqqi.xlsx');
     }
 }

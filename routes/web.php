@@ -16,6 +16,8 @@ Route::post('/student', 'StudentController@add');
 
 Route::get('/student/{id}', 'StudentDetailController@detail');
 Route::get('/student/delete/{id}', 'StudentDetailController@delete');
+Route::get('/student/excel/{id}', 'StudentDetailController@excel');
+
 Route::post('/studentpass', 'StudentDetailController@password');
 Route::post('/student_bio', 'StudentDetailController@bio');
 Route::post('/talaqqi', 'StudentDetailController@talaqqi');
